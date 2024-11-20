@@ -112,7 +112,6 @@ export const Textarea = styled.textarea<{
   width: 100%;
   padding: ${(p) => p.theme.spacing.item};
   color: ${(p) => p.theme.color.primary.text};
-  color: #fff;
   outline: none;
   box-sizing: border-box;
   resize: none;
