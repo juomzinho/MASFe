@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Garret } from "../../../utils/defines/garret";
-import { Dimension } from "../../../utils/defines/dimension";
+import { Garret, GarretArr } from "../../../utils/defines/garret";
+import { Dimension, DimensionArr } from "../../../utils/defines/dimension";
 
 interface Props {
     edit?: VerbSchema | null
@@ -34,9 +34,9 @@ export const useFormVerb = ({edit, submit}: Props) => {
         for(const field in dirtyFields){
             const key = field as keyof VerbSchema
             if(key === "garret"){
-                modifiedData[key] = Garret[e![key]]
+                modifiedData[key] = GarretArr.findIndex(item => item === e![key]) + 1 
             }else if(key === "dimension"){
-                modifiedData[key] = Dimension[e![key]]
+                modifiedData[key] = DimensionArr.findIndex(item => item === e![key]) + 1 
             }else{
                 modifiedData[key] = e![key]
             }

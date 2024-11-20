@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
-import { Dimension } from "../../../utils/defines/dimension";
+import {  DimensionArr } from "../../../utils/defines/dimension";
 
 interface Props {
     edit?: ACSchema | null
@@ -41,7 +41,7 @@ export const useFormAC = ({edit, submit}: Props) => {
         for(const field in dirtyFields){
             const key = field as keyof ACSchema
             if(key === "dimension"){
-                modifiedData[key] = Dimension[e![key].toString()]
+                modifiedData[key] = DimensionArr.findIndex(item => item === e![key]) + 1 
             }else{
                 modifiedData[key] = e![key]
             }
