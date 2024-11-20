@@ -24,6 +24,7 @@ const defaultValues = {
       defaultColors: {
         red: "#D40808",
         blue: "#311499",
+        green: "#40916c",
         gradient: "linear-gradient(138deg, rgba(81,33,255,1) 0%, rgba(49,20,153,1) 64%);"
       }
 }

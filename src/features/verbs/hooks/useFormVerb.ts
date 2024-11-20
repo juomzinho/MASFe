@@ -34,9 +34,9 @@ export const useFormVerb = ({edit, submit}: Props) => {
         for(const field in dirtyFields){
             const key = field as keyof VerbSchema
             if(key === "garret"){
-                modifiedData[key] = Garret[Number(e![key])]
+                modifiedData[key] = Garret[e![key]]
             }else if(key === "dimension"){
-                modifiedData[key] = Dimension[Number(e![key])]
+                modifiedData[key] = Dimension[e![key]]
             }else{
                 modifiedData[key] = e![key]
             }

@@ -4,6 +4,9 @@ import ButtonWrapper from '../buttonCard/ButtonWrapper'
 import SquareButton from '../squareButton/SquareButton'
 import * as Styles from './Styles'
 import ActionModal from '../actionModal/ActionModal'
+import TrashIcon from '../../assets/icons/trash.svg'
+import CancelIcon from '../../assets/icons/cancel.svg'
+import SaveIcon from '../../assets/icons/save.svg'
 
 interface Props {
   title: string
@@ -18,9 +21,9 @@ const ModalHeader = ({ title, close, handleAction, handleDelete }: Props) => {
     <ContentHeader>
       <Styles.Title>{title}</Styles.Title>
       <ButtonWrapper>
-        {close && <SquareButton icon="" color="default" action={() => close(false)} />}
-        {handleDelete && <SquareButton icon="" color="red" action={() => toggleDelete(true)} />}
-        {handleAction && <SquareButton icon="" color="blue" action={() => handleAction()} />}
+        {close && <SquareButton icon={CancelIcon} color="default" action={() => close(false)} />}
+        {handleDelete && <SquareButton icon={TrashIcon} color="red" action={() => toggleDelete(true)} />}
+        {handleAction && <SquareButton icon={SaveIcon} color="green" action={() => handleAction()} />}
       </ButtonWrapper>
       {modalDelete && handleDelete && (
         <ActionModal action="excluir" cancel={() => toggleDelete(false)} handleAction={handleDelete} />
