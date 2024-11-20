@@ -32,12 +32,12 @@ export const lightTheme = {
     ...defaultValues,
     defaultColor: {
       ...defaultValues.defaultColors,
-      default: "#FFFFFF"
+      default: "#f8f9fa"
     },
     color: {
-        background: "#FFFFFF",
+        background: "#f8f9fa",
         primary: {
-          color: "#F7F6F9",
+          color: "#e9ecef",
           text: "#000000",
         },
         secondary: {
