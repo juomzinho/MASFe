@@ -13,7 +13,7 @@ export const Content = styled.aside`
 export const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing.itemGap};
+  gap: ${(p) => p.theme.spacing.item};
 `
 
 export const Item = styled.button<{ active: boolean }>`

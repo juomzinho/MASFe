@@ -5,7 +5,7 @@ const defaultValues = {
       },
     
       font: {
-        small: "0.5rem",
+        small: "0.7rem",
         default: "1rem",
         large: "1.5rem",
         big: "2rem",
@@ -30,6 +30,10 @@ const defaultValues = {
 
 export const lightTheme = {
     ...defaultValues,
+    defaultColor: {
+      ...defaultValues.defaultColors,
+      default: "#FFFFFF"
+    },
     color: {
         background: "#FFFFFF",
         primary: {
@@ -38,12 +42,17 @@ export const lightTheme = {
         },
         secondary: {
           text: "#818181"
-        }
+        },
+        shadow: "rgba(211, 211, 212, 0.4)"
     }
 }
 
 export const darkTheme = {
   ...defaultValues,
+  defaultColor: {
+    ...defaultValues.defaultColors,
+    default: "#222831"
+  },
   color: {
       background: "#222831",
       primary: {
@@ -52,6 +61,7 @@ export const darkTheme = {
       },
       secondary: {
         text: "#818181"
-      }
+      },
+      shadow: "rgba(11, 11, 12, 0.4)"
   }
 }
