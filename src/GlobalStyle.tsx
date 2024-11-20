@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
-import UrbanistBold from './assets/fonts/urbanist/Urbanist-Bold.ttf'
-import Urbanist from './assets/fonts/urbanist/Urbanist-Regular.ttf'
-import UrbanisLight from './assets/fonts/urbanist/Urbanist-Light.ttf'
-import Quicksand from './assets/fonts/quicksand/Quicksand-Regular.ttf'
-import QuicksandLight from './assets/fonts/quicksand/Quicksand-Light.ttf'
+import UrbanistBold from './assets/fonts/Urbanist/Urbanist-Bold.ttf'
+import Urbanist from './assets/fonts/Urbanist/Urbanist-Regular.ttf'
+import UrbanisLight from './assets/fonts/Urbanist/Urbanist-Light.ttf'
+import Quicksand from './assets/fonts/Quicksand/Quicksand-Regular.ttf'
+import QuicksandLight from './assets/fonts/Quicksand/Quicksand-Light.ttf'
 
 export const GlobalStyles = createGlobalStyle`
 
