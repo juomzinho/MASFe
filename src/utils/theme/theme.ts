@@ -7,8 +7,9 @@ const defaultValues = {
       font: {
         small: "0.5rem",
         default: "1rem",
+        large: "1.5rem",
         big: "2rem",
-        bigger: "3rem",
+        bigger: "2.3rem",
       },
 
       spacing: {
@@ -42,5 +43,15 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-    
+  ...defaultValues,
+  color: {
+      background: "#222831",
+      primary: {
+        color: "#31363F",
+        text: "#EEEEEE",
+      },
+      secondary: {
+        text: "#818181"
+      }
+  }
 }

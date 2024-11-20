@@ -22,3 +22,43 @@ p {
   padding: 0;
   box-sizing: border-box;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  pointer-events: none; 
+  -webkit-user-drag: none;
+}
+
+img {
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  pointer-events: none; 
+  -webkit-user-drag: none;
+}
+
+p, a {
+  font-family: 'Quicksand';
+  font-weight: normal;
+  font-style: normal;
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  pointer-events: none; 
+  -webkit-user-drag: none;
+}
+
+* { 
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+}

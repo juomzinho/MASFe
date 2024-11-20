@@ -1,7 +1,10 @@
-import Logo from '../../assets/icons/masfe-icon.svg'
+import LogoDark from '../../assets/icons/masfe-dark.svg'
+import LogoLight from '../../assets/icons/masfe-light.svg'
+import { useThemeStore } from '../../store/theme'
 
 const SidebarHeader = () => {
-  return <img src={Logo} style={{ width: '100%' }} />
+  const { theme } = useThemeStore()
+  return <img src={theme === 'light' ? LogoLight : LogoDark} style={{ width: '100%' }} />
 }
 
 export default SidebarHeader

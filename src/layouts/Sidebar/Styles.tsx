@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Content = styled.aside`
   height: 100%;
-  width: 220px;
-  padding: 10px;
+  width: 16rem;
+  padding: ${(p) => p.theme.spacing.content};
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -47,4 +47,5 @@ export const ItemTitle = styled.h3<{ active: boolean }>`
   color: ${(p) => (p.active ? p.theme.color.primary.text : p.theme.color.secondary.text)};
   width: calc(100% - 45px);
   text-align: left;
+  font-weight: ${(p) => (p.active ? 'normal' : '300')};
 `

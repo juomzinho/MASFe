@@ -1,29 +1,32 @@
-import Container from '../../layouts/Container/Container'
-import Sidebar from '../../layouts/Sidebar/Sidebar'
-import SidebarHeader from '../../layouts/Sidebar/SidebarHeader'
-import SidebarMenuWrapper from '../../layouts/Sidebar/SidebarMenuWrapper'
-import SidebarItem from '../../layouts/Sidebar/SidebarItem'
-import Content from '../../layouts/Content/Content'
-import SidebarUserMenu from '../../layouts/Sidebar/SidebarUserMenu'
+import Container from '../../layouts/container/Container'
+import DashboardSidebar from './components/sidebar/Sidebar'
+import { ContentEnum, useContentStore } from '../../store/content'
+import AC from '../../features/acceptanceCriteria/components/content/AC'
+import UXCorrelations from '../../features/uxCorrelations/components/content/UXCorrelations'
+import Verbs from '../../features/verbs/components/content/Verbs'
+import Personas from '../../features/personas/components/content/Personas'
 
-// import { createContext } from "react";
 const Dashboard = () => {
+  const { content } = useContentStore()
+
+  const getContent = () => {
+    console.log(content)
+    switch (content) {
+      case ContentEnum['Critérios de Aceitação']:
+        return <AC />
+      case ContentEnum['UX Correlations']:
+        return <UXCorrelations />
+      case ContentEnum['Verbos']:
+        return <Verbs />
+      case ContentEnum['Personas']:
+        return <Personas />
+    }
+  }
+
   return (
     <Container>
-      <Sidebar>
-        <SidebarHeader />
-        <SidebarMenuWrapper>
-          <SidebarItem title="Inicio" />
-          <SidebarItem title="UX Correlations" />
-          <SidebarItem title="Verbos" />
-          <SidebarItem title="Critérios de Aceitação" />
-          <SidebarItem title="Personas" />
-        </SidebarMenuWrapper>
-        <SidebarUserMenu />
-      </Sidebar>
-      <Content>
-        <></>
-      </Content>
+      <DashboardSidebar />
+      {getContent()}
     </Container>
   )
 }
