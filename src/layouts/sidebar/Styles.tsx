@@ -35,11 +35,10 @@ export const Item = styled.button<{ active: boolean }>`
   }`}
 `
 
-export const Icon = styled.div<{ active: boolean }>`
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  background: ${(p) => (p.active ? p.theme.defaultColors.gradient : p.theme.color.secondary.text)};
+export const Icon = styled.img<{ active: boolean }>`
+  width: 25px;
+  height: 25px;
+  ${(p) => !p.active && 'opacity: 0.5'}
 `
 
 export const ItemTitle = styled.h3<{ active: boolean }>`
@@ -48,4 +47,20 @@ export const ItemTitle = styled.h3<{ active: boolean }>`
   width: calc(100% - 45px);
   text-align: left;
   font-weight: ${(p) => (p.active ? 'normal' : '300')};
+`
+
+export const Card = styled.div`
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: ${(p) => p.theme.spacing.item};
+  align-items: center;
+  background: ${(p) => p.theme.color.primary.color};
+  padding: ${(p) => p.theme.spacing.item};
+  cursor: pointer;
+`
+
+export const Text = styled.p`
+  font-size: ${(p) => p.theme.font.small};
+  color: ${(p) => p.theme.color.primary.text};
 `

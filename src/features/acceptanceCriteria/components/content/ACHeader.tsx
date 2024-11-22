@@ -1,7 +1,7 @@
 import SquareButton from '../../../../components/squareButton/SquareButton'
 import { ContentHeader, ContentHeaderButtonWrapper, ContentHeaderTitle } from '../../../../layouts/content/Index'
-import CreateIcon from '../../../../assets/icons/create-icon.svg'
-import FilterIcon from '../../../../assets/icons/filter.svg'
+// import CreateIcon from '../../../../assets/icons/create-icon.svg'
+// import FilterIcon from '../../../../assets/icons/filter.svg'
 import { useState } from 'react'
 import ModalAC from '../modalAC/ModaAC'
 
@@ -10,10 +10,10 @@ const ACHeader = () => {
   return (
     <ContentHeader>
       <ContentHeaderTitle title="Critérios de aceitação" />
-      <ContentHeaderButtonWrapper>
+      {/* <ContentHeaderButtonWrapper>
         <SquareButton icon={FilterIcon} color="default" action={() => {}} />
         <SquareButton icon={CreateIcon} color="blue" action={() => toggleAC(true)} />
-      </ContentHeaderButtonWrapper>
+      </ContentHeaderButtonWrapper> */}
       {modalAC && <ModalAC close={toggleAC} />}
     </ContentHeader>
   )

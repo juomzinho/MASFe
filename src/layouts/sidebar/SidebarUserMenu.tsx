@@ -1,11 +1,16 @@
 import { useThemeStore } from '../../store/theme'
+import * as Styles from './Styles'
+import SunIcon from '../../assets/icons/sun.svg'
+import MoonIcon from '../../assets/icons/moon.svg'
 
 const SidebarUserMenu = () => {
-  const { setTheme } = useThemeStore()
+  const { setTheme, theme } = useThemeStore()
   return (
     <div>
-      <button onClick={() => setTheme('light')}>light</button>
-      <button onClick={() => setTheme('dark')}>dark</button>
+      <Styles.Card onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        <Styles.Icon src={theme === 'light' ? SunIcon : MoonIcon} active />
+        <Styles.Text>Modo {theme === 'light' ? 'claro' : 'escuro'} </Styles.Text>
+      </Styles.Card>
     </div>
   )
 }
