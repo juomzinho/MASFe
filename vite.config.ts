@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import svgr from "vite-plugin-svgr"
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default defineConfig({
     plugins: [react(), tsconfigPaths(), svgr()],

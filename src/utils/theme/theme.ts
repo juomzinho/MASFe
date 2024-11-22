@@ -31,9 +31,9 @@ const defaultValues = {
 
 export const lightTheme = {
     ...defaultValues,
-    defaultColor: {
+    defaultColors: {
       ...defaultValues.defaultColors,
-      default: "#f8f9fa"
+      default: "#e9ecef"
     },
     color: {
         background: "#f8f9fa",
@@ -50,9 +50,9 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...defaultValues,
-  defaultColor: {
+  defaultColors: {
     ...defaultValues.defaultColors,
-    default: "#222831"
+    default: "#31363F"
   },
   color: {
       background: "#222831",

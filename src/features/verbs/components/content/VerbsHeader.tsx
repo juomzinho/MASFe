@@ -2,18 +2,21 @@ import { useState } from 'react'
 import SquareButton from '../../../../components/squareButton/SquareButton'
 import { ContentHeader, ContentHeaderButtonWrapper, ContentHeaderTitle } from '../../../../layouts/content/Index'
 import ModalVerb from '../modalVerb/ModalVerb'
-import CreateIcon from '../../../../assets/icons/create-icon.svg'
-import FilterIcon from '../../../../assets/icons/filter.svg'
+import { useThemeStore } from '../../../../store/theme'
+import { Icons } from '../../../../utils/defines/icons'
+import Search from '../../../../components/search/Search'
 
 const VerbsHeader = () => {
   const [modalVerb, toggleVerb] = useState(false)
+  const { theme } = useThemeStore()
 
   return (
     <ContentHeader>
       <ContentHeaderTitle title="Verbos" />
       <ContentHeaderButtonWrapper>
-        <SquareButton icon={FilterIcon} color="default" action={() => {}} />
-        <SquareButton icon={CreateIcon} color="blue" action={() => toggleVerb(true)} />
+        <Search />
+        <SquareButton icon={Icons[theme].filter} color="default" action={() => {}} />
+        <SquareButton icon={Icons[theme].create} color="default" action={() => toggleVerb(true)} />
       </ContentHeaderButtonWrapper>
       {modalVerb && <ModalVerb close={toggleVerb} />}
     </ContentHeader>

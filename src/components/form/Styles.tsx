@@ -152,7 +152,7 @@ export const Textarea = styled.textarea<{
 `
 
 export const Option = styled.option`
-  background-color: #202833;
+  background-color: ${(p) => p.theme.color.primary.color};
 `
 export const FormItem = styled.div<{
   width: number | string | undefined
