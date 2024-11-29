@@ -16,15 +16,16 @@ const FormPersona = forwardRef<HTMLButtonElement, Props>(function FormPersonaRef
   const { control, errors, handleSend, handleSubmit, register } = useFormPersona({ submit, edit })
   return (
     <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-      <FormInput
-        placeholder="Nome"
-        widthInput={'250px'}
-        {...register('name', { required: true })}
-        error={errors.name}
+      <FormInput title="Nome" widthInput={'280px'} {...register('name', { required: true })} error={errors.name} />
+      <FormInput title="Idade" widthInput={'80px'} {...register('age', { required: true })} error={errors.age} />
+      <FormSelect control={control} title="Gênero" options={Genders} {...register('gender')} error={errors.gender} />
+      <FormSelect
+        control={control}
+        title="Profissão"
+        options={Occupations}
+        {...register('occupation')}
+        error={errors.occupation}
       />
-      <FormInput placeholder="Idade" widthInput={'50px'} {...register('age', { required: true })} error={errors.age} />
-      <FormSelect control={control} options={Occupations} {...register('occupation')} error={errors.occupation} />
-      <FormSelect control={control} options={Genders} {...register('gender')} error={errors.gender} />
       <FormTextArea width={600} title="Necessidade" {...register('needs', { required: true })} error={errors.needs} />
       <FormTextArea
         width={600}

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
+export const Button = styled.button<{ full?: boolean }>`
   width: calc(100% / 3 - 0.4rem);
   height: 100px;
   border-radius: ${(p) => p.theme.border.radius};
@@ -12,6 +12,7 @@ export const Button = styled.button`
   justify-content: space-between;
   background: ${(p) => p.theme.color.background};
   transition: 0.5s;
+  ${(p) => p.full && 'width: 100%;'}
   &:hover {
     opacity: 0.6;
   }

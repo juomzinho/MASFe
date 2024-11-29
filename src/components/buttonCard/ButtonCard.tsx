@@ -4,10 +4,15 @@ import * as Styles from './Styles'
 interface Props {
   children: ReactNode
   action: () => void
+  full?: boolean
 }
 
-const ButtonCard = ({ children, action }: Props) => {
-  return <Styles.Button onClick={() => action()}>{children}</Styles.Button>
+const ButtonCard = ({ children, action, full }: Props) => {
+  return (
+    <Styles.Button full={full} onClick={() => action()}>
+      {children}
+    </Styles.Button>
+  )
 }
 
 export default ButtonCard

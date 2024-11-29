@@ -19,7 +19,7 @@ export const Input = styled.input<{
   height: 40px;
   width: 100%;
   border-radius: 20px;
-  padding-left: ${(p) => p.theme.spacing.item};
+  padding-left: 15px;
   padding-right: ${(p) => p.theme.spacing.item};
   color: ${(p) => p.theme.color.primary.text};
   outline: none;
@@ -67,8 +67,8 @@ export const Select = styled.select<{
   border: none;
   height: 40px;
   border-radius: 20px;
-  padding-left: ${(p) => p.theme.spacing.item};
-  padding-right: ${(p) => p.theme.spacing.item};
+  padding-left: 15px;
+  padding-right: 15px;
   color: ${(p) => p.theme.color.primary.text};
   outline: none;
   box-sizing: border-box;
@@ -155,7 +155,7 @@ export const Option = styled.option`
   background-color: ${(p) => p.theme.color.primary.color};
 `
 export const FormItem = styled.div<{
-  width: number | string | undefined
+  width?: number | string | undefined
   row?: boolean
   error?: boolean
 }>`
@@ -170,4 +170,6 @@ border-radius: 5px;
 export const Title = styled.p`
   color: ${(p) => p.theme.color.primary.text};
   font-size: ${(p) => p.theme.font.small};
+  margin-left: 10px;
+  margin-bottom: 5px;
 `

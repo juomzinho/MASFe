@@ -23,6 +23,9 @@ p {
   box-sizing: border-box;
   transition: .5s;
 }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 h1, h2, h3, h4, h5 {
   font-family: 'Urbanist';

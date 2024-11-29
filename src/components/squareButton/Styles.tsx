@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Button = styled.button<{ color: string }>`
   width: 40px;
   height: 40px;
-  border-radius: 6px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   background: ${(p) => p.theme.defaultColors[p.color]};

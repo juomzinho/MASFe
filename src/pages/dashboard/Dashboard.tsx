@@ -5,6 +5,7 @@ import AC from '../../features/acceptanceCriteria/components/content/AC'
 import UXCorrelations from '../../features/uxCorrelations/components/content/UXCorrelations'
 import Verbs from '../../features/verbs/components/content/Verbs'
 import Personas from '../../features/personas/components/content/Personas'
+import Home from '../../features/home/components/home/Home'
 
 const Dashboard = () => {
   const { content } = useContentStore()
@@ -12,6 +13,8 @@ const Dashboard = () => {
   const getContent = () => {
     console.log(content)
     switch (content) {
+      case ContentEnum['Inicio']:
+        return <Home />
       case ContentEnum['Critérios de Aceitação']:
         return <AC />
       case ContentEnum['UX Correlations']:

@@ -16,19 +16,16 @@ const FormVerb = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ sub
   const { control, errors, handleSend, handleSubmit, register } = useFormVerb({ submit, edit })
   return (
     <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-      <FormInput
-        placeholder="Verbo"
-        widthInput={'250px'}
-        {...register('verb', { required: true })}
-        error={errors.verb}
-      />
+      <FormInput title="Verbo" widthInput={'250px'} {...register('verb', { required: true })} error={errors.verb} />
       <FormSelect
+        title="Dimensão"
         control={control}
         options={DimensionArr}
         {...register('dimension', { required: true })}
         error={errors.dimension}
       />
       <FormSelect
+        title="Garret"
         control={control}
         options={GarretArr}
         {...register('garret', { required: true })}

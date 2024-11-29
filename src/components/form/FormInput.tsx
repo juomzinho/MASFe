@@ -10,15 +10,10 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const FormInput = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, title, widthInput, error, ...props }, ref) => {
     return (
-      <Styles.Input
-        placeholder={title}
-        type={type}
-        className={className}
-        ref={ref}
-        {...props}
-        error={error}
-        width={widthInput}
-      />
+      <Styles.FormItem>
+        <Styles.Title>{title}</Styles.Title>
+        <Styles.Input type={type} className={className} ref={ref} {...props} error={error} width={widthInput} />
+      </Styles.FormItem>
     )
   },
 )
