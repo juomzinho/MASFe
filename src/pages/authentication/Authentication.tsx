@@ -9,7 +9,7 @@ export enum AuthContent {
 }
 
 const Authentication = () => {
-  const [content, toggleContent] = useState(AuthContent.Register)
+  const [content, toggleContent] = useState(AuthContent.Login)
 
   const getContent = () => {
     switch (content) {
