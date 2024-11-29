@@ -6,8 +6,14 @@ import { useThemeStore } from '../store/theme'
 import { GlobalStyles } from '../GlobalStyle'
 import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Authentication from '../pages/authentication/Authentication'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
-const router = createBrowserRouter([{ path: '/', element: <Dashboard /> }])
+const router = createBrowserRouter([
+  { path: '/', element: <Authentication /> },
+  { path: '/dashboard', element: <Dashboard /> },
+])
 const queryClient = new QueryClient()
 
 const Root = () => {
@@ -20,10 +26,12 @@ const Root = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <GlobalStyles />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </LocalizationProvider>
     </QueryClientProvider>
   )
 }

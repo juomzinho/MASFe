@@ -4,8 +4,8 @@ interface Props {
   title: string
 }
 
-const ContentHeaderTitle = ({ title }: Props) => {
+const Title = ({ title }: Props) => {
   return <Styles.Title>{title}</Styles.Title>
 }
 
-export default ContentHeaderTitle
+export default Title

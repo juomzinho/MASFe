@@ -1,18 +1,18 @@
 import * as Styles from './Styles'
 import ShortcutItem from '../shortcut/ShortcutItem'
 import Card from '../card/Card'
-import { Title } from '../../../../components/modal/Styles'
+import { Title } from '../../../../components/modals/modal/Styles'
 import { useVerbs } from '../../../verbs/hooks/useVerbs'
-import ButtonCard from '../../../../components/buttonCard/ButtonCard'
+import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
 import {
   //   ButtonCardIcon,
   ButtonCardText,
   ButtonCardTitle,
   ButtonCardUser,
   ButtonColumnWrapper,
-} from '../../../../components/buttonCard/Index'
+} from '../../../../components/buttons/buttonCard/Index'
 import { Garret } from '../../../../utils/defines/garret'
-import Button from '../../../../components/button/Button'
+import Button from '../../../../components/buttons/button/Button'
 import Chart from '../../../../components/charts/pie/PieChart'
 import BarChart from '../../../../components/charts/bar/BarChart'
 
@@ -79,7 +79,7 @@ const Home = () => {
           })}
         </div>
       </Card>
-      <Card gridArea="4 / 3 / 7 / 5">
+      <Card gridArea="5 / 3 / 7 / 5">
         <Title>Dimensão</Title>
         <BarChart
           data={[
@@ -95,8 +95,8 @@ const Home = () => {
           ]}
         />
       </Card>
-      <Card gridArea="1 / 4 / 4 / 5">
-        <Title>Verbos</Title>
+      <Card gridArea="1 / 4 / 3 / 5">
+        <Title>Dimensões</Title>
         <Chart
           data={[
             { name: 'Eficiência', value: 40 },
@@ -104,9 +104,10 @@ const Home = () => {
           ]}
         />
       </Card>
-      <Card gridArea="1 / 3 / 4 / 4">
+      <Card gridArea="1 / 3 / 3 / 4">
         <Title>Garret</Title>
         <Chart
+          hiddenLegend
           data={[
             { name: 'Design de Interação', value: 40 },
             { name: 'Design de Interface', value: 10 },
@@ -115,7 +116,7 @@ const Home = () => {
           ]}
         />
       </Card>
-      {/* <Card gridArea="1 / 3 / 3 / 5" /> */}
+      <Card gridArea="5 / 3 / 3 / 6" />
     </Styles.Content>
   )
 }

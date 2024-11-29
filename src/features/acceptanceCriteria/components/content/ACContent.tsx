@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { ContentWrapper } from '../../../../layouts/content/Index'
 import { useAC } from '../../hooks/useAC'
-import ButtonCard from '../../../../components/buttonCard/ButtonCard'
+import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
 import {
   ButtonCardIcon,
   ButtonCardTitle,
   ButtonCardUser,
   ButtonColumnWrapper,
-} from '../../../../components/buttonCard/Index'
+} from '../../../../components/buttons/buttonCard/Index'
 import eficiencyIcon from '../../../../assets/icons/eficiencia.svg'
 import { ACSchema } from '../../hooks/useFormAC'
 import ModalAC from '../modalAC/ModaAC'

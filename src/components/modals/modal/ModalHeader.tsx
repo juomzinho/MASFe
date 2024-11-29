@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { ContentHeader } from '../../layouts/content/Index'
-import ButtonWrapper from '../buttonCard/ButtonWrapper'
-import SquareButton from '../squareButton/SquareButton'
+import { ContentHeader } from '../../../layouts/content/Index'
+import ButtonWrapper from '../../buttons/buttonCard/ButtonWrapper'
+import SquareButton from '../../buttons/squareButton/SquareButton'
 import * as Styles from './Styles'
 import ActionModal from '../actionModal/ActionModal'
-import TrashIcon from '../../assets/icons/trash.svg'
-import CancelIcon from '../../assets/icons/cancel.svg'
-import SaveIcon from '../../assets/icons/save.svg'
+import TrashIcon from '../../../assets/icons/trash.svg'
+import CancelIcon from '../../../assets/icons/cancel.svg'
+import SaveIcon from '../../../assets/icons/save.svg'
 
 interface Props {
   title: string

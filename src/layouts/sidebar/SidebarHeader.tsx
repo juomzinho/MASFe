@@ -4,7 +4,7 @@ import { useThemeStore } from '../../store/theme'
 
 const SidebarHeader = () => {
   const { theme } = useThemeStore()
-  return <img src={theme === 'light' ? LogoLight : LogoDark} style={{ width: '100%' }} />
+  return <img src={theme === 'light' ? LogoLight : LogoDark} style={{ width: '200px' }} />
 }
 
 export default SidebarHeader

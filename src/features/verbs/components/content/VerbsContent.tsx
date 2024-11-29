@@ -4,7 +4,7 @@ import ButtonCard, {
   ButtonCardTitle,
   ButtonCardUser,
   ButtonColumnWrapper,
-} from '../../../../components/buttonCard/Index'
+} from '../../../../components/buttons/buttonCard/Index'
 import { ContentWrapper } from '../../../../layouts/content/Index'
 import { Garret } from '../../../../utils/defines/garret'
 import { useVerbs } from '../../hooks/useVerbs'

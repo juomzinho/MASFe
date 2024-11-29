@@ -1,3 +1,5 @@
+import { TextField } from '@mui/material'
+import { styled as MaterialStyled } from '@mui/material/styles'
 import { FieldError } from 'react-hook-form'
 import styled from 'styled-components'
 
@@ -27,7 +29,7 @@ export const Input = styled.input<{
   ${(props) => `width: ${props.width};`}
   ${(props) => props.full && `width: 100%`};
   ${(props) => props.width && `width: ${props.width}px`};
-  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColor.red}`};
+  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColors.red}`};
   transition: 0.5s;
   ::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {
@@ -73,7 +75,7 @@ export const Select = styled.select<{
   outline: none;
   box-sizing: border-box;
   ${(props) => (props.full ? `width: 100%` : null)};
-  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColor.red}; `};
+  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColors.red}; `};
   ${(props) => (props.width ? `width: ${props.width}px` : null)};
   transition: 0.5s;
 
@@ -116,7 +118,7 @@ export const Textarea = styled.textarea<{
   box-sizing: border-box;
   resize: none;
   ${(props) => (props.full ? `width: 100%` : null)};
-  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColor.red}; `};
+  ${(props) => props.error && `border: solid 1px ${props.theme.defaultColors.red}; `};
   ${(props) => (props.width ? `width: ${props.width}px` : null)};
   transition: 0.5s;
   ::-webkit-outer-spin-button,
@@ -164,7 +166,7 @@ export const FormItem = styled.div<{
   width: ${(p) => p.width}px;
   ${(p) => p.row && 'flex-direction: row; justify-content: space-between; align-items: center;'}
   ${(p) => p.error && 'background: rgba(250, 0, 0, 0.2);'}
-border-radius: 5px;
+  border-radius: 5px;
 `
 
 export const Title = styled.p`
@@ -173,3 +175,12 @@ export const Title = styled.p`
   margin-left: 10px;
   margin-bottom: 5px;
 `
+
+export const StyledTextField = MaterialStyled(TextField)({
+  color: '#f8bbd0',
+  borderRadius: '20px',
+  borderWidth: '1px',
+  borderColor: '#e91e63',
+  border: '1px solid',
+  backgroundColor: '#880e4f',
+})

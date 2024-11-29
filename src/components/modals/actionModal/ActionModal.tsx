@@ -1,4 +1,4 @@
-import Button from '../button/Button'
+import Button from '../../buttons/button/Button'
 import Modal, { ModalContentWrapper, ModalFooter, ModalHeader } from '../modal'
 import ModalText from '../modal/ModalText'
 

@@ -1,4 +1,4 @@
-import { PieChart } from '@mui/x-charts'
+import { pieArcClasses, PieChart } from '@mui/x-charts'
 import { useThemeStore } from '../../../store/theme'
 import { darkTheme, lightTheme } from '../../../utils/theme/theme'
 
@@ -44,6 +44,12 @@ const Chart = ({ data, hiddenLegend }: Props) => {
           },
         },
       }}
+      skipAnimation
+      sx={() => ({
+        [`.${pieArcClasses.root}`]: {
+          stroke: 'none',
+        },
+      })}
     />
   )
 }

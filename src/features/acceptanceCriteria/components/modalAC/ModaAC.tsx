@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modal'
+import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modals/modal'
 import FormPersona from './FormAC'
 import { useModalAC } from '../../hooks/useModalAC'
 import { ACSchema } from '../../hooks/useFormAC'

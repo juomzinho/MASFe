@@ -43,7 +43,7 @@ export const Wrapper = styled.div`
 `
 
 export const CardUser = styled.div`
-  height: 25px;
+  height: 30px;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -52,11 +52,10 @@ export const CardUser = styled.div`
   background: ${(p) => p.theme.color.primary.color};
   padding: ${(p) => p.theme.spacing.item};
 `
-export const UserIcon = styled.div`
-  width: 15px;
-  height: 15px;
-  border-radius: 7.5px;
-  background: ${(p) => p.theme.defaultColors.red};
+export const UserIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
 `
 export const UserText = styled.p`
   font-size: ${(p) => p.theme.font.small};

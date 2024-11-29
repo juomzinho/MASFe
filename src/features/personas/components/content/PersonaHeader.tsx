@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import SquareButton from '../../../../components/squareButton/SquareButton'
-import { ContentHeader, ContentHeaderButtonWrapper, ContentHeaderTitle } from '../../../../layouts/content/Index'
+import SquareButton from '../../../../components/buttons/squareButton/SquareButton'
+import { ContentHeader, ContentHeaderButtonWrapper } from '../../../../layouts/content/Index'
 import ModalPersona from '../modalPersona/ModalPersona'
 import { useThemeStore } from '../../../../store/theme'
 import { Icons } from '../../../../utils/defines/icons'
 import Search from '../../../../components/search/Search'
+import Title from '../../../../components/texts/title/Title'
 
 const PersonaHeader = () => {
   const [modalPersona, togglePersona] = useState(false)
@@ -12,7 +13,7 @@ const PersonaHeader = () => {
 
   return (
     <ContentHeader>
-      <ContentHeaderTitle title="Personas" />
+      <Title title="Personas" />
       <ContentHeaderButtonWrapper>
         <Search />
         <SquareButton icon={Icons[theme].filter} color="default" action={() => {}} />

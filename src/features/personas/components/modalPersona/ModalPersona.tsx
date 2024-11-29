@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modal'
+import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modals/modal'
 import { PersonaSchema } from '../../hooks/useFormPersona'
 import FormPersona from './FormPersona'
 import { useModalPersona } from '../../hooks/useModalPersona'

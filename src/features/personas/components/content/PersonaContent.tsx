@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { ContentWrapper } from '../../../../layouts/content/Index'
 import { PersonaSchema } from '../../hooks/useFormPersona'
 import { usePersonas } from '../../hooks/usePersonas'
-import ButtonCard from '../../../../components/buttonCard/ButtonCard'
-import { ButtonCardText, ButtonCardTitle, ButtonColumnWrapper } from '../../../../components/buttonCard/Index'
+import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
+import { ButtonCardText, ButtonCardTitle, ButtonColumnWrapper } from '../../../../components/buttons/buttonCard/Index'
 import ModalPersona from '../modalPersona/ModalPersona'
 
 const PersonaContent = () => {

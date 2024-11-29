@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modal'
-import ModalText from '../../../../components/modal/ModalText'
+import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/modals/modal'
+import ModalText from '../../../../components/modals/modal/ModalText'
 import { useModalVerb } from '../../hooks/useModalVerb'
 import FormVerb from './FormVerb'
 import { VerbSchema } from '../../hooks/useFormVerb'

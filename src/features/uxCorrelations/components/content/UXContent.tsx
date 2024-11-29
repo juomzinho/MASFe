@@ -3,9 +3,9 @@ import { ContentWrapper } from '../../../../layouts/content/Index'
 import { usePersonas } from '../../../personas/hooks/usePersonas'
 import { PersonaSchema } from '../../../personas/hooks/useFormPersona'
 import ModalPersona from '../../../personas/components/modalPersona/ModalPersona'
-import ButtonCard from '../../../../components/buttonCard/ButtonCard'
-import ButtonCardTitle from '../../../../components/buttonCard/ButtonCardTitle'
-import { ButtonCardText, ButtonColumnWrapper } from '../../../../components/buttonCard/Index'
+import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
+import ButtonCardTitle from '../../../../components/buttons/buttonCard/ButtonCardTitle'
+import { ButtonCardText, ButtonColumnWrapper } from '../../../../components/buttons/buttonCard/Index'
 
 const UXContent = () => {
   const { data } = usePersonas()
