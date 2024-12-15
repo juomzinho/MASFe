@@ -27,6 +27,7 @@ const Register = ({ toggleComponent }: Props) => {
         <FormInput widthInput={'400px'} title="Email" {...register('email', { required: true })} error={errors.email} />
         <FormInput
           widthInput={'400px'}
+          passoword
           title="Senha"
           {...register('password', { required: true })}
           error={errors.password}

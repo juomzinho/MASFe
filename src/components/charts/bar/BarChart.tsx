@@ -7,15 +7,16 @@ interface Props {
     name: string
     value: number
   }[]
+  width: number,
   hiddenLegend?: boolean
 }
 
-const Chart = ({ data }: Props) => {
+const Chart = ({ data, width }: Props) => {
   const { theme } = useThemeStore()
   return (
     <BarChart
-      width={800}
-      height={300}
+    height={300}
+      width={width}
       series={[
         {
           data: data.map((item) => item.value),

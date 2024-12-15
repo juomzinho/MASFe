@@ -7,12 +7,13 @@ interface Props {
     name: string
     value: number
   }[]
+  width: number,
   hiddenLegend?: boolean
 }
 
 const colors = ['#5121FF', '#C6009B', '#c1121f', '#606c38', '#003049', '#dda15e', '#cdb4db', '#386641', '#d4a373']
 
-const Chart = ({ data, hiddenLegend }: Props) => {
+const Chart = ({ data, hiddenLegend, width }: Props) => {
   const { theme } = useThemeStore()
   return (
     <PieChart
@@ -34,7 +35,7 @@ const Chart = ({ data, hiddenLegend }: Props) => {
           hidden: hiddenLegend,
           direction: 'row',
           markGap: 2,
-          position: { vertical: 'top', horizontal: 'middle' },
+          position: { vertical: 'middle', horizontal: 'right' },
           padding: 0,
           itemMarkHeight: 4,
           itemMarkWidth: 10,
@@ -50,6 +51,7 @@ const Chart = ({ data, hiddenLegend }: Props) => {
           stroke: 'none',
         },
       })}
+      width={width}
     />
   )
 }

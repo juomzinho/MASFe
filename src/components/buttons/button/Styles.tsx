@@ -9,7 +9,7 @@ export const Button = styled.button<{ color?: string; width?: string | number }>
   cursor: pointer;
   display: flex;
   align-items: center;
-  display: fle
+  display: flex;
   padding: 20px;
   justify-content: center;
   background: ${(p) => p.theme.color.background};
