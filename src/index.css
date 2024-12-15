@@ -43,6 +43,12 @@ h1, h2, h3, h4, h5 {
   stroke: none;
 }
 
+div {
+  font-family: 'Quicksand';
+  font-weight: normal;
+  font-style: normal;
+}
+
 img {
   user-select: none; 
   -webkit-user-select: none; 

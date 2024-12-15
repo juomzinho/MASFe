@@ -19,7 +19,7 @@ const SidebarUserMenu = () => {
   })
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
       <Styles.Card onClick={() => handleLogout.mutate()}>
         {/* <Styles.Icon src={theme === 'light' ? SunIcon : MoonIcon} active /> */}
         <Styles.Text>Sair </Styles.Text>

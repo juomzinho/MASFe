@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { forwardRef, ReactNode } from 'react'
 import * as Styles from './Styles'
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
   children?: ReactNode
 }
 
-const Card = ({ gridArea, children }: Props) => {
-  return <Styles.Card gridArea={gridArea}>{children}</Styles.Card>
-}
+const Card = forwardRef<any, Props>(({ gridArea, children }, ref) => {
+  return <Styles.Card gridArea={gridArea} ref={ref}>{children}</Styles.Card>
+})
 
 export default Card
