@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Garret, GarretArr } from "../../../utils/defines/garret";
 import { Dimension, DimensionArr } from "../../../utils/defines/dimension";
 
 interface Props {
@@ -12,9 +11,19 @@ interface Props {
 const verbSchema = z.object({
     id: z.string().nullable(),
     verb: z.string(),
-    garret: z.union([z.number(), z.string()]),
     dimension: z.union([z.number(), z.string()]),
-})
+    userNeeds: z.boolean(),
+    functionalSpecifications: z.boolean(),
+    interactionDesign: z.boolean(),
+    interfaceDesign: z.boolean(),
+    informationDesign: z.boolean(),
+    productGoals: z.boolean(),
+    contentRequirements: z.boolean(),
+    informationArchitecture: z.boolean(),
+    navigationDesign: z.boolean(),
+    visualDesign: z.boolean(),
+});
+
 
 export type VerbSchema = z.infer<typeof verbSchema>
 
@@ -25,7 +34,7 @@ export const useFormVerb = ({edit, submit}: Props) => {
 
     useEffect(()=>{
         if(edit){
-            reset({...edit, garret: Garret[Number(edit.garret)], dimension: Dimension[Number(edit.dimension)]})
+            reset({...edit,  dimension: Dimension[Number(edit.dimension)]})
         }
     }, [edit])
 
@@ -33,9 +42,7 @@ export const useFormVerb = ({edit, submit}: Props) => {
         const modifiedData: any = {}
         for(const field in dirtyFields){
             const key = field as keyof VerbSchema
-            if(key === "garret"){
-                modifiedData[key] = GarretArr.findIndex(item => item === e![key]) + 1 
-            }else if(key === "dimension"){
+            if(key === "dimension"){
                 modifiedData[key] = DimensionArr.findIndex(item => item === e![key]) + 1 
             }else{
                 modifiedData[key] = e![key]

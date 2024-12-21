@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "react-query"
 import { UXProps } from "./useFormUX"
+import createUX from "../services/createUX"
 
 interface Props {
     edit?: UXProps
@@ -9,8 +10,8 @@ interface Props {
 export const useModalUX = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
 
-    const {mutate: send, isLoading: isUpdating} = useMutation({
-        mutationFn: async ()=>{},
+    const {mutate: send, isLoading: isUpdating, data} = useMutation({
+        mutationFn: createUX,
         mutationKey: ["updateUX"],
         onSuccess: () => {
             queryClient.refetchQueries(['ux'])
@@ -18,7 +19,7 @@ export const useModalUX = ({edit, close}: Props) => {
     })
 
     const {mutate: mutateDelete, isLoading: isDeleting} = useMutation({
-        mutationFn: async ()=>{},
+        mutationFn: async () => {},
         mutationKey: ["deleteUX"],
         onSuccess: () => {
             queryClient.refetchQueries(['ux'])
@@ -27,21 +28,18 @@ export const useModalUX = ({edit, close}: Props) => {
     })
 
     const handleRequest = (data: UXProps) => {
-        // console.log(data)
-        // if(edit){
-        //     send({data, id: edit.id??""})
-        // }else{
-        //     send({data, id: ""})
-        // }
+        send({data})
     }
 
     const handleDelete = () => {
-        // mutateDelete({id: edit?.id??""})
+        mutateDelete()
     }
 
     return {
+        data,
         handleRequest, 
         handleDelete: edit?handleDelete:undefined, 
-        isLoading: isUpdating || isDeleting
+        isLoading: isDeleting,
+        isGen: isUpdating
     } 
 }

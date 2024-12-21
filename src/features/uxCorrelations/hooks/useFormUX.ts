@@ -9,10 +9,10 @@ interface Props {
 
 const uxSchema = z.object({
     id: z.string().nullable(),
-    name: z.string(),
-    description: z.string(),
-    persona_id: z.union([z.number(), z.string()]),
-    verb_id: z.union([z.number(), z.string()]),
+    name: z.string().nullable().optional(),
+    description: z.string().nullable().optional(),
+    persona_id: z.union([z.number(), z.string()]).nullable().optional(),
+    verb_id: z.union([z.number(), z.string()]).nullable().optional(),
 })
 
 export type UXProps = z.infer<typeof uxSchema>

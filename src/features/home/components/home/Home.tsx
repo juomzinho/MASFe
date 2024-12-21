@@ -23,26 +23,25 @@ const Home = () => {
   const { data } = useVerbs()
   const verbsRef = useRef<any>(null)
   const garretRef = useRef<any>(null)
-  const [width, setWidth] = useState({garret: 0, verb: 0});
+  const [width, setWidth] = useState({ garret: 0, verb: 0 })
 
   useEffect(() => {
     const updateWidth = () => {
       if (verbsRef.current) {
-        setWidth(old => ({...old, verb: verbsRef.current.offsetWidth}));
+        setWidth((old) => ({ ...old, verb: verbsRef.current.offsetWidth }))
       }
       if (garretRef.current) {
-        setWidth(old => ({...old, garret: garretRef.current.offsetWidth}));
+        setWidth((old) => ({ ...old, garret: garretRef.current.offsetWidth }))
       }
-    };
+    }
 
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
 
     return () => {
-      window.removeEventListener("resize", updateWidth);
-    };
-  }, []);
-
+      window.removeEventListener('resize', updateWidth)
+    }
+  }, [])
 
   return (
     <Styles.Content>
@@ -134,7 +133,8 @@ const Home = () => {
       <Card gridArea="1 / 3 / 4 / 5" ref={garretRef}>
         <Title>Garret</Title>
         <Chart
-          width={width.garret}
+          hiddenLegend
+          width={width.garret - width.garret / 2}
           data={[
             { name: 'Design de Interação', value: 40 },
             { name: 'Design de Interface', value: 10 },

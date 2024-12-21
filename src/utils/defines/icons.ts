@@ -12,6 +12,8 @@ import UXWhite from '../../assets/icons/ux-white.svg'
 import UXBlack from '../../assets/icons/ux-black.svg'
 import VerbWhite from '../../assets/icons/verb-white.svg'
 import VerbBlack from '../../assets/icons/verb-black.svg'
+import AIWhite from '../../assets/icons/ai-white.svg'
+import AIBlack from '../../assets/icons/ai-black.svg'
 
 export const Icons = {
     light: {
@@ -21,7 +23,8 @@ export const Icons = {
         home: HomeBlack,
         user: UserBlack,
         ux: UXBlack,
-        verb: VerbBlack
+        verb: VerbBlack,
+        ai: AIWhite
     },
     dark: {
         search: SearchWhite,
@@ -30,6 +33,7 @@ export const Icons = {
         home: HomeWhite,
         user: UserWhite,
         ux: UXWhite,
-        verb: VerbWhite
+        verb: VerbWhite,
+        ai: AIBlack
     },
 }

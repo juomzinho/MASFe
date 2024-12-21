@@ -23,3 +23,27 @@ export const GarretArr = [
     "Design de Navegação",
     "Design Visual"
 ]
+
+export const GarretVars: Array<
+    "userNeeds" | 
+    "functionalSpecifications" |
+    "interactionDesign" | 
+    "interfaceDesign" | 
+    "informationDesign" | 
+    "productGoals" | 
+    "contentRequirements" |
+    "informationArchitecture" | 
+    "navigationDesign" | 
+    "visualDesign"> 
+    = [
+        'userNeeds',
+        'functionalSpecifications',
+        'interactionDesign',
+        'interfaceDesign',
+        'informationDesign',
+        'productGoals',
+        'contentRequirements',
+        'informationArchitecture',
+        'navigationDesign',
+        'visualDesign'
+]

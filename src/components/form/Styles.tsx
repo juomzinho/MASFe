@@ -184,3 +184,33 @@ export const StyledTextField = MaterialStyled(TextField)({
   border: '1px solid',
   backgroundColor: '#880e4f',
 })
+
+export const Label = styled.label`
+  color: #fff;
+  margin-left: 5px;
+  font-size: 15px;
+`
+
+export const CheckboxContainer = styled.div<{ checked: boolean }>`
+  display: flex;
+  align-items: center;
+  background: ${(p) => p.theme.color.primary.color};
+  border: solid 1px ${(p) => p.theme.color.primary.text};
+  border: none;
+  height: 40px;
+  width: 100%;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: ${(p) => p.theme.spacing.item};
+  color: ${(p) => p.theme.color.primary.text};
+  font-size: ${(p) => p.theme.font.small};
+`
+export const HiddenCheckbox = styled.input`
+  width: 20px;
+  border-radius: 10px;
+  height: 20px;
+  cursor: pointer;
+  :disabled {
+    opacity: 0.5;
+  }
+`

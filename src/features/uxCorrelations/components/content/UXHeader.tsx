@@ -16,7 +16,6 @@ const UXHeader = () => {
       <Title title="UX Correlations" />
       <ContentHeaderButtonWrapper>
         <Search />
-        <SquareButton icon={Icons[theme].filter} color="default" action={() => {}} />
         <SquareButton icon={Icons[theme].create} color="default" action={() => toggleUX(true)} />
       </ContentHeaderButtonWrapper>
       {modalUX && <ModalUX close={toggleUX} />}
