@@ -22,8 +22,8 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
         series={[
           {
             data: data.map((item, id) => ({ id, label: item.name, value: item.value })),
-            innerRadius: 115,
-            outerRadius: 130,
+            innerRadius: 95,
+          outerRadius: 75,
             highlightScope: { fade: 'global', highlight: 'item' },
           },
         ]}

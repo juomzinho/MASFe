@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default async ({id}: Props) => {
-    return await api.delete("/personas?id="+id)
+    return await api.delete("/personas?id="+id, {withCredentials: true})
 }

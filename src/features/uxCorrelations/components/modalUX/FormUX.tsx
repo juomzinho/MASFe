@@ -8,6 +8,7 @@ import { usePersonas } from '../../../personas/hooks/usePersonas'
 import { PersonaSchema } from '../../../personas/hooks/useFormPersona'
 import { useVerbs } from '../../../verbs/hooks/useVerbs'
 import { VerbSchema } from '../../../verbs/hooks/useFormVerb'
+import * as Styles from './Styles'
 
 interface Props {
   submit: (e: UXProps) => void
@@ -24,7 +25,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
     <Form onSubmit={handleSubmit((e) => handleSend(e))}>
       <FormInput title="Titulo" widthInput={'600px'} {...register('name')} error={errors.name} />
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
-        <h1>Eu </h1>
+        <Styles.FormText>Eu, </Styles.FormText>
         <FormSelect
           title="Persona"
           control={control}
@@ -32,7 +33,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
           {...register('persona_id')}
           error={errors.persona_id}
         />{' '}
-        <h2>, quero que o sistema </h2>
+        <Styles.FormText>, quero que o sistema </Styles.FormText>
         <FormSelect
           title="Verbos"
           control={control}

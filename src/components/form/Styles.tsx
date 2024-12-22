@@ -186,9 +186,9 @@ export const StyledTextField = MaterialStyled(TextField)({
 })
 
 export const Label = styled.label`
-  color: #fff;
   margin-left: 5px;
-  font-size: 15px;
+  color: ${(p) => p.theme.color.primary.text};
+  font-size: ${(p) => p.theme.font.small};
 `
 
 export const CheckboxContainer = styled.div<{ checked: boolean }>`
@@ -199,7 +199,7 @@ export const CheckboxContainer = styled.div<{ checked: boolean }>`
   border: none;
   height: 40px;
   width: 100%;
-  border-radius: 20px;
+border-radius: 20px;
   padding-left: 15px;
   padding-right: ${(p) => p.theme.spacing.item};
   color: ${(p) => p.theme.color.primary.text};

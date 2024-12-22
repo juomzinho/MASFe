@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default async ({data}: Props) => {
-    return await api.post("/personas", {...data})
+    return await api.post("/personas", {...data}, {withCredentials: true})
 }

@@ -3,6 +3,7 @@ import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/
 import { PersonaSchema } from '../../hooks/useFormPersona'
 import FormPersona from './FormPersona'
 import { useModalPersona } from '../../hooks/useModalPersona'
+import Loader from '../../../../components/loader/Loader'
 
 interface Props {
   close: (value: boolean) => void
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const ModalPersona = ({ close, edit }: Props) => {
-  const { handleRequest, handleDelete } = useModalPersona({ edit, close })
+  const { handleRequest, handleDelete, isLoading } = useModalPersona({ edit, close })
   const ref = useRef<HTMLButtonElement>(null)
 
   return (
@@ -24,6 +25,7 @@ const ModalPersona = ({ close, edit }: Props) => {
       <ModalContentWrapper>
         <FormPersona submit={handleRequest} ref={ref} edit={edit} />
       </ModalContentWrapper>
+      {isLoading && <Loader />}
     </Modal>
   )
 }

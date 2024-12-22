@@ -7,5 +7,5 @@ interface Props {
 }
 
 export default async ({data, id}: Props) => {
-    return await api.put("/personas", {...data, id})
+    return await api.put("/personas", {...data, id}, {withCredentials: true})
 }

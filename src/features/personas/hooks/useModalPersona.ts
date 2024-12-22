@@ -17,7 +17,6 @@ export const useModalPersona = ({edit, close}: Props) => {
         mutationKey: ["updatePersona"],
         onSuccess: () => {
             queryClient.refetchQueries(['personas'])
-            alert("deu bom")
         }
     })
 

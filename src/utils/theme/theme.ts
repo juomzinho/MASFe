@@ -44,6 +44,7 @@ export const lightTheme = {
         secondary: {
           text: "#818181"
         },
+        modalBG: "rgba(0,0,0,0.2)",
         shadow: "rgba(211, 211, 212, 0.4)"
     }
 }
@@ -63,6 +64,7 @@ export const darkTheme = {
       secondary: {
         text: "#818181"
       },
+      modalBG: "rgba(220,220,220,0.2)",
       shadow: "rgba(11, 11, 12, 0.4)"
   }
 }

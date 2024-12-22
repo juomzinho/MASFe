@@ -8,7 +8,7 @@ export const Container = styled.div`
   left: 0;
   backdrop-filter: blur(6px);
   display: flex;
-  background: rgba(0, 0, 0, 0.2);
+  background: ${p => p.theme.color.modalBG};
   justify-content: center;
   align-items: center;
 `

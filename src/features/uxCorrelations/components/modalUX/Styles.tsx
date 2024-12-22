@@ -42,3 +42,6 @@ export const Row = styled.div`
   gap: 10px;
   align-items: center;
 `
+export const FormText = styled.h1`
+  color: ${p => p.theme.color.primary.text};
+`
