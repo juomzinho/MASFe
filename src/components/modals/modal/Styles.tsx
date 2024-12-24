@@ -8,9 +8,10 @@ export const Container = styled.div`
   left: 0;
   backdrop-filter: blur(6px);
   display: flex;
-  background: ${p => p.theme.color.modalBG};
+  background: ${(p) => p.theme.color.modalBG};
   justify-content: center;
   align-items: center;
+  z-index: 10;
 `
 export const AnimateOpen = keyframes`
     from{
@@ -35,6 +36,12 @@ export const Content = styled.div`
   padding: ${(p) => p.theme.spacing.content};
   -webkit-box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
   box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
+`
+
+export const Scroll = styled.div`
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
 `
 
 export const Title = styled.h1`

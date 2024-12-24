@@ -1,28 +1,35 @@
 import { useState } from 'react'
 import { ContentWrapper } from '../../../../layouts/content/Index'
-import { usePersonas } from '../../../personas/hooks/usePersonas'
-import { PersonaSchema } from '../../../personas/hooks/useFormPersona'
-import ModalPersona from '../../../personas/components/modalPersona/ModalPersona'
 import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
 import ButtonCardTitle from '../../../../components/buttons/buttonCard/ButtonCardTitle'
-import { ButtonCardText, ButtonColumnWrapper } from '../../../../components/buttons/buttonCard/Index'
+import { ButtonCardIcon, ButtonCardText, ButtonColumnWrapper } from '../../../../components/buttons/buttonCard/Index'
+import { UXProps } from '../../hooks/useFormUX'
+import ModalUX from '../modalUX/ModalUX'
+import { Dimension } from '../../../../utils/defines/dimension'
+import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
+import eficacyIcon from '../../../../assets/icons/eficacy.svg'
 
-const UXContent = () => {
-  const { data } = usePersonas()
-  const [persona, setPersona] = useState<PersonaSchema | null>(null)
+interface Props {
+  data: UXProps[]
+}
+
+const UXContent = ({ data }: Props) => {
+  const [ux, setUX] = useState<UXProps | null>(null)
   return (
     <ContentWrapper>
       {data.map((item: any, index: number) => {
         return (
-          <ButtonCard key={index.toString()} action={() => setPersona(item)}>
+          <ButtonCard key={index.toString()} action={() => setUX(item)}>
             <ButtonColumnWrapper>
               <ButtonCardTitle title={item.name} />
-              <ButtonCardText text={item.occupation} />
+              <ButtonCardText text={item.verb} />
+              <ButtonCardText text={item.user.name} />
             </ButtonColumnWrapper>
+            <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
           </ButtonCard>
         )
       })}
-      {persona && <ModalPersona edit={persona} close={() => setPersona(null)} />}
+      {ux && <ModalUX edit={ux} close={() => setUX(null)} />}
     </ContentWrapper>
   )
 }

@@ -49,6 +49,7 @@ export const useModalVerb = ({edit, close}: Props) => {
     }
 
     const handleDelete = () => {
+        console.log("delete")
         mutateDelete({id: edit?.id??""})
     }
 

@@ -7,7 +7,12 @@ import Title from '../../../../components/texts/title/Title'
 import ModalUX from '../modalUX/ModalUX'
 import { useState } from 'react'
 
-const UXHeader = () => {
+interface Props {
+  handleFilter: (value: string) => void
+  searchTerm: string
+}
+
+const UXHeader = ({ handleFilter, searchTerm }: Props) => {
   const { theme } = useThemeStore()
   const [modalUX, toggleUX] = useState(false)
 
@@ -15,7 +20,7 @@ const UXHeader = () => {
     <ContentHeader>
       <Title title="UX Correlations" />
       <ContentHeaderButtonWrapper>
-        <Search />
+        <Search handleFilter={handleFilter} searchTerm={searchTerm} />
         <SquareButton icon={Icons[theme].create} color="default" action={() => toggleUX(true)} />
       </ContentHeaderButtonWrapper>
       {modalUX && <ModalUX close={toggleUX} />}

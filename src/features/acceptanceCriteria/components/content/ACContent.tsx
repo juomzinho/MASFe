@@ -8,9 +8,11 @@ import {
   ButtonCardUser,
   ButtonColumnWrapper,
 } from '../../../../components/buttons/buttonCard/Index'
-import eficiencyIcon from '../../../../assets/icons/eficiencia.svg'
+import eficacyIcon from '../../../../assets/icons/eficacy.svg'
+import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
 import { ACSchema } from '../../hooks/useFormAC'
 import ModalAC from '../modalAC/ModaAC'
+import { Dimension } from '../../../../utils/defines/dimension'
 
 const ACContent = () => {
   const { data } = useAC()
@@ -25,7 +27,7 @@ const ACContent = () => {
               <ButtonCardUser name={item.user.name} />
             </ButtonColumnWrapper>
             <ButtonColumnWrapper>
-              <ButtonCardIcon icon={eficiencyIcon} />
+              <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
             </ButtonColumnWrapper>
           </ButtonCard>
         )

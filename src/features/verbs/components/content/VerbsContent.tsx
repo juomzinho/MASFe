@@ -6,10 +6,12 @@ import ButtonCard, {
 } from '../../../../components/buttons/buttonCard/Index'
 import { ContentWrapper } from '../../../../layouts/content/Index'
 import { useVerbs } from '../../hooks/useVerbs'
-import eficiencyIcon from '../../../../assets/icons/eficiencia.svg'
+import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
+import eficacyIcon from '../../../../assets/icons/eficacy.svg'
 import { VerbSchema } from '../../hooks/useFormVerb'
 import { useState } from 'react'
 import ModalVerb from '../modalVerb/ModalVerb'
+import { Dimension } from '../../../../utils/defines/dimension'
 
 const VerbsContent = () => {
   const { data } = useVerbs()
@@ -24,7 +26,7 @@ const VerbsContent = () => {
               <ButtonCardTitle title={item.verb} />
               <ButtonCardUser name={item.user.name} />
             </ButtonColumnWrapper>
-            <ButtonCardIcon icon={eficiencyIcon} />
+            <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
           </ButtonCard>
         )
       })}

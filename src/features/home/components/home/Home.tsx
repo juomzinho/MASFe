@@ -2,10 +2,9 @@ import * as Styles from './Styles'
 // import ShortcutItem from '../shortcut/ShortcutItem'
 import Card from '../card/Card'
 import { Title } from '../../../../components/modals/modal/Styles'
-import { useVerbs } from '../../../verbs/hooks/useVerbs'
 import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
 import {
-  //   ButtonCardIcon,
+  ButtonCardIcon,
   ButtonCardText,
   ButtonCardTitle,
   ButtonCardUser,
@@ -17,12 +16,19 @@ import Chart from '../../../../components/charts/pie/PieChart'
 import BarChart from '../../../../components/charts/bar/BarChart'
 import { useContentStore } from '../../../../store/content'
 import { useEffect, useRef, useState } from 'react'
+import { useUX } from '../../../uxCorrelations/hooks/useUX'
+import { UXProps } from '../../../uxCorrelations/hooks/useFormUX'
+import ModalUX from '../../../uxCorrelations/components/modalUX/ModalUX'
+import { Dimension } from '../../../../utils/defines/dimension'
+import eficacyIcon from '../../../../assets/icons/eficacy.svg'
+import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
 
 const Home = () => {
   const { setContent } = useContentStore()
-  const { data } = useVerbs()
+  const { data: UXdata } = useUX()
   const verbsRef = useRef<any>(null)
   const garretRef = useRef<any>(null)
+  const [ux, toggleUX] = useState<UXProps | null>(null)
   const [width, setWidth] = useState({ garret: 0, verb: 0 })
 
   useEffect(() => {
@@ -61,48 +67,26 @@ const Home = () => {
             flexWrap: 'wrap',
             gap: 10,
             padding: 10,
-            justifyContent: 'start',
+            justifyContent: 'flex-start',
             height: 'calc(100% - 70px)',
             overflow: 'scroll',
+            alignContent: 'flex-start',
           }}
         >
-          {data.map((item: any, index: number) => {
+          {UXdata?.map((item: any, index: number) => {
             return (
-              <ButtonCard key={index.toString()} full action={() => {}}>
+              <ButtonCard key={index.toString()} full action={() => toggleUX(item)}>
                 <ButtonColumnWrapper>
-                  <ButtonCardTitle title={item.verb} />
+                  <ButtonCardTitle title={item.name} />
                   <ButtonCardText text={Garret[item.garret]} />
                   <ButtonCardUser name={item.user.name} />
                 </ButtonColumnWrapper>
-                {/* <ButtonCardIcon icon={eficiencyIcon} /> */}
-              </ButtonCard>
-            )
-          })}
-          {data.map((item: any, index: number) => {
-            return (
-              <ButtonCard key={index.toString()} full action={() => {}}>
-                <ButtonColumnWrapper>
-                  <ButtonCardTitle title={item.verb} />
-                  <ButtonCardText text={Garret[item.garret]} />
-                  <ButtonCardUser name={item.user.name} />
-                </ButtonColumnWrapper>
-                {/* <ButtonCardIcon icon={eficiencyIcon} /> */}
-              </ButtonCard>
-            )
-          })}
-          {data.map((item: any, index: number) => {
-            return (
-              <ButtonCard key={index.toString()} full action={() => {}}>
-                <ButtonColumnWrapper>
-                  <ButtonCardTitle title={item.verb} />
-                  <ButtonCardText text={Garret[item.garret]} />
-                  <ButtonCardUser name={item.user.name} />
-                </ButtonColumnWrapper>
-                {/* <ButtonCardIcon icon={eficiencyIcon} /> */}
+                <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
               </ButtonCard>
             )
           })}
         </div>
+        {ux && <ModalUX close={() => toggleUX(null)} edit={ux} />}
       </Card>
       <Card gridArea="4 / 3 / 7 / 5" ref={verbsRef}>
         <Title>Verbos</Title>

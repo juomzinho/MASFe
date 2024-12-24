@@ -1,34 +1,67 @@
-import { useMutation, useQueryClient } from "react-query"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 import { UXProps } from "./useFormUX"
 import createUX from "../services/createUX"
+import {  useState } from "react"
+import fetchUXById from "../services/fetchUXById"
+import deleteUX from "../services/deleteUX"
+import updateUX from "../services/updateUX"
 
 interface Props {
     edit?: UXProps
     close: (value: boolean) => void    
 }
 
+export enum Content {
+    Register = 1,
+    Result
+}
+
+interface Props {
+    
+}
+
 export const useModalUX = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
+    const [content, toggleContent] = useState(Content.Register)
+    const [result, setResult] = useState<any>(null)
 
-    const {mutate: send, isLoading: isUpdating, data} = useMutation({
-        mutationFn: createUX,
+    const {isLoading: isGeting, isFetching} = useQuery({
+        queryFn: () => fetchUXById({id: edit?.id??''}),
+        queryKey: ['ux', edit?.id],
+        enabled: !!edit,
+        onSuccess: (r) => {
+            setResult(r.data.content)
+            toggleContent(Content.Result)
+        }
+    })
+
+    const {mutate: send, isLoading: isUpdating} = useMutation({
+        mutationFn: edit?updateUX:createUX,
         mutationKey: ["updateUX"],
-        onSuccess: () => {
-            queryClient.refetchQueries(['ux'])
+        onSuccess: (r) => {
+            queryClient.refetchQueries(['uxs'])
+            toggleContent(Content.Result)
+            setResult(r.data.content)
+            console.log(r.data)
         }
     })
 
     const {mutate: mutateDelete, isLoading: isDeleting} = useMutation({
-        mutationFn: async () => {},
+        mutationFn: ()=>deleteUX({id: edit?.id??""}),
         mutationKey: ["deleteUX"],
         onSuccess: () => {
-            queryClient.refetchQueries(['ux'])
+            queryClient.refetchQueries(['uxs'])
             close(false)
         }
     })
 
     const handleRequest = (data: UXProps) => {
-        send({data})
+        if(edit){
+            send({data, id: edit.id??""})
+        }
+        else{
+            send({data, id: ''})
+        }
     }
 
     const handleDelete = () => {
@@ -36,10 +69,12 @@ export const useModalUX = ({edit, close}: Props) => {
     }
 
     return {
-        data,
         handleRequest, 
         handleDelete: edit?handleDelete:undefined, 
-        isLoading: isDeleting,
-        isGen: isUpdating
+        isLoading: isDeleting || isGeting || isFetching,
+        isGen: isUpdating,
+        result,
+        content,
+        toggleContent
     } 
 }

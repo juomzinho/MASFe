@@ -1,7 +1,6 @@
 import Modal from '../../../../components/modals/modal'
-import { useModalUX } from '../../hooks/useModalUX'
+import { Content, useModalUX } from '../../hooks/useModalUX'
 import { UXProps } from '../../hooks/useFormUX'
-import Loader from '../../../../components/loader/Loader'
 import UXGenerating from './UXGenerating'
 import RegisterUX from './RegisterUX'
 import ResultUX from './Result'
@@ -12,20 +11,17 @@ interface Props {
 }
 
 const ModalUX = ({ close, edit }: Props) => {
-  const { handleRequest, handleDelete, isLoading, isGen } = useModalUX({ edit, close })
- 
-  if(isGen) return <UXGenerating />
+  const { handleRequest, handleDelete, isLoading, isGen, result, content, toggleContent } = useModalUX({ edit, close })
+
+  if (isGen) return <UXGenerating />
 
   return (
-    <Modal>
-      {/* <RegisterUX 
-        close={close}
-        handleDelete={handleDelete}
-        handleRequest={handleRequest}
-        edit={edit}
-      /> */}
-      <ResultUX />
-      {isLoading && <Loader />}
+    <Modal loading={isLoading}>
+      {content === Content.Result ? (
+        <ResultUX result={result} toggleContent={toggleContent} close={close} handleDelete={handleDelete} />
+      ) : (
+        <RegisterUX close={close} handleDelete={handleDelete} handleRequest={handleRequest} edit={result} />
+      )}
     </Modal>
   )
 }

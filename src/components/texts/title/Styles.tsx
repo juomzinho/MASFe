@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const Title = styled.h1`
+export const Title = styled.h1<{ size?: string }>`
   color: ${(p) => p.theme.color.primary.text};
-  font-size: ${(p) => p.theme.font.large};
+  font-size: ${(p) => p.theme.font[p.size ?? 'large']};
 `

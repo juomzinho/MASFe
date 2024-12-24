@@ -4,7 +4,7 @@ import { ContentHeader, ContentHeaderButtonWrapper } from '../../../../layouts/c
 import ModalVerb from '../modalVerb/ModalVerb'
 import { useThemeStore } from '../../../../store/theme'
 import { Icons } from '../../../../utils/defines/icons'
-import Search from '../../../../components/search/Search'
+// import Search from '../../../../components/search/Search'
 import Title from '../../../../components/texts/title/Title'
 
 const VerbsHeader = () => {
