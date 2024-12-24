@@ -7,7 +7,12 @@ import { Icons } from '../../../../utils/defines/icons'
 import Search from '../../../../components/search/Search'
 import Title from '../../../../components/texts/title/Title'
 
-const PersonaHeader = () => {
+interface Props {
+  handleFilter: (value: string) => void
+  searchTerm: string
+}
+
+const PersonaHeader = ({ handleFilter, searchTerm }: Props) => {
   const [modalPersona, togglePersona] = useState(false)
   const { theme } = useThemeStore()
 
@@ -15,8 +20,7 @@ const PersonaHeader = () => {
     <ContentHeader>
       <Title title="Personas" />
       <ContentHeaderButtonWrapper>
-        <Search />
-        <SquareButton icon={Icons[theme].filter} color="default" action={() => {}} />
+        <Search handleFilter={handleFilter} searchTerm={searchTerm} />
         <SquareButton icon={Icons[theme].create} color="default" action={() => togglePersona(true)} />
       </ContentHeaderButtonWrapper>
       {modalPersona && <ModalPersona close={togglePersona} />}

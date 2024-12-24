@@ -8,7 +8,7 @@ export const useVerbs = () => {
     const [filtered, setFiltered] = useState<VerbSchema[]>([])
     const [searchTerm, setTerm] = useState('')
 
-    const {isLoading, data} = useQuery({
+    const {isLoading, data, isFetching} = useQuery({
         queryFn: fetchVerbs,
         queryKey: ['verbs'],
         onSuccess: (r) => {
@@ -17,7 +17,6 @@ export const useVerbs = () => {
         }
     })
 
-    
     const handleFilter = (value: string) => {
         setTerm(value)
         if(value.length === 0){
@@ -28,5 +27,5 @@ export const useVerbs = () => {
         setFiltered(data?.data.content.filter((item: VerbSchema) => item.verb?.toUpperCase().includes(value.toUpperCase())))
     }
 
-    return {data: filtered, isLoading, handleFilter, searchTerm }
+    return {data: filtered, isLoading: isLoading || isFetching, handleFilter, searchTerm }
 }

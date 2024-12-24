@@ -29,9 +29,9 @@ const Login = ({ toggleComponent }: Props) => {
           {...register('password', { required: true })}
           error={errors.password}
         />
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'right' }}>
+        {/* <div style={{ display: 'flex', width: '100%', justifyContent: 'right' }}>
           <ButtonWithoutBg title="Esqueceu sua senha?" action={() => {}} />
-        </div>
+        </div> */}
         <Button title="Entrar" type="submit" action={() => {}} color="gradient" width={'400px'} />
         <div style={{ display: 'flex', gap: 5, width: '100%', justifyContent: 'center' }}>
           <ButtonWithoutBg title="Não possui conta?" action={toggleComponent} />

@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { ContentWrapper } from '../../../../layouts/content/Index'
 import { PersonaSchema } from '../../hooks/useFormPersona'
-import { usePersonas } from '../../hooks/usePersonas'
 import ButtonCard from '../../../../components/buttons/buttonCard/ButtonCard'
 import { ButtonCardText, ButtonCardTitle, ButtonColumnWrapper } from '../../../../components/buttons/buttonCard/Index'
 import ModalPersona from '../modalPersona/ModalPersona'
 
-const PersonaContent = () => {
-  const { data } = usePersonas()
+interface Props {
+  data: PersonaSchema[]
+}
+
+const PersonaContent = ({ data }: Props) => {
   const [persona, setPersona] = useState<PersonaSchema | null>(null)
   return (
     <ContentWrapper>
