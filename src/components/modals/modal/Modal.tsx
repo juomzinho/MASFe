@@ -3,12 +3,13 @@ import * as Styles from './Styles'
 
 interface Props {
   children: ReactNode
+  loading?: boolean
 }
 
-const Modal = ({ children }: Props) => {
+const Modal = ({ children, loading }: Props) => {
   return (
     <Styles.Container>
-      <Styles.Content>{children}</Styles.Content>
+      <Styles.Content>{loading ? <p>Carregando</p> : children}</Styles.Content>
     </Styles.Container>
   )
 }

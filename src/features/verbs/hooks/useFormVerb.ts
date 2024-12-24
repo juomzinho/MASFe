@@ -22,6 +22,7 @@ const verbSchema = z.object({
     informationArchitecture: z.boolean(),
     navigationDesign: z.boolean(),
     visualDesign: z.boolean(),
+    removeGarret: z.boolean().nullable().optional()
 });
 
 
@@ -34,6 +35,7 @@ export const useFormVerb = ({edit, submit}: Props) => {
 
     useEffect(()=>{
         if(edit){
+            console.log(edit, Dimension[Number(edit.dimension)])
             reset({...edit,  dimension: Dimension[Number(edit.dimension)]})
         }
     }, [edit])

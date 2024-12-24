@@ -15,8 +15,7 @@ const VerbsHeader = () => {
     <ContentHeader>
       <Title title="Verbos" />
       <ContentHeaderButtonWrapper>
-        <Search />
-        <SquareButton icon={Icons[theme].filter} color="default" action={() => {}} />
+        {/* <Search /> */}
         <SquareButton icon={Icons[theme].create} color="default" action={() => toggleVerb(true)} />
       </ContentHeaderButtonWrapper>
       {modalVerb && <ModalVerb close={toggleVerb} />}

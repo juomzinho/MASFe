@@ -11,11 +11,11 @@ interface Props {
 }
 
 const ModalVerb = ({ close, edit }: Props) => {
-  const { handleRequest, handleDelete } = useModalVerb({ edit, close })
+  const { handleRequest, handleDelete, data, isLoading } = useModalVerb({ edit, close })
   const ref = useRef<HTMLButtonElement>(null)
 
   return (
-    <Modal>
+    <Modal loading={isLoading}>
       <ModalHeader
         title={`${edit ? 'Editar' : 'Cadastrar'} verbo`}
         close={close}
@@ -27,7 +27,7 @@ const ModalVerb = ({ close, edit }: Props) => {
           text="Escolha se o verbo será incluido como eficiência ou eficácia e em qual dimensão
                 de Garret"
         />
-        <FormVerb submit={handleRequest} ref={ref} edit={edit} />
+        <FormVerb submit={handleRequest} ref={ref} edit={data} />
       </ModalContentWrapper>
     </Modal>
   )
