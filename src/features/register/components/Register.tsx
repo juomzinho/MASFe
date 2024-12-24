@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Register = ({ toggleComponent }: Props) => {
-  const { control, errors, register, handleSubmit, setValue, handleSend, isLoading } = useRegister({toggleComponent})
+  const { control, errors, register, handleSubmit, setValue, handleSend, isLoading } = useRegister({ toggleComponent })
   return (
     <AuthContentWrapper>
       <SidebarHeader />
@@ -48,11 +48,10 @@ const Register = ({ toggleComponent }: Props) => {
         />
         <FormInput widthInput={'400px'} title="Profissão" {...register('occupation')} error={errors.occupation} />
         <Button title="Cadastrar" action={() => {}} type="submit" color="gradient" width={'400px'} />
-        <div style={{ display: 'flex', gap: 5, width: '100%', justifyContent: 'center' }}>
-          <ButtonWithoutBg title="Já possui conta?" action={toggleComponent} />
-          <ButtonWithoutBg title="Entre" color="gradient" action={toggleComponent} />
-        </div>
       </Form>
+      <div style={{ display: 'flex', gap: 5, width: '100%', justifyContent: 'center', marginTop: '-15px' }}>
+        <ButtonWithoutBg title="Já possui conta? Entre" action={toggleComponent} />
+      </div>
       {isLoading && <Loader />}
     </AuthContentWrapper>
   )
