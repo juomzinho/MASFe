@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default async ({id}: Props) => {
-    return await api.delete("/ux-correlation?id="+id)
+    return await api.delete("/ux-correlation?id="+id, {withCredentials: true})
 }

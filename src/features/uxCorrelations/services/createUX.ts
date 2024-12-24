@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default async ({data}: Props) => {
-    return await api.post("/ux-correlation", {...data})
+    return await api.post("/ux-correlation", {...data}, {withCredentials: true})
 }

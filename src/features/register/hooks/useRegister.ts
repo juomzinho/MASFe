@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import z from 'zod'
 import registerUser from '../services/registerUser'
+import { NotificationStatus, useNotificationStore } from '../../../store/notifications'
+import { handleError } from '../../../utils/handleError/handleError'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     toggleComponent: () => void
@@ -22,7 +25,9 @@ const createUserSchema = z.object({
 
 export type CreateUserSchema = z.infer<typeof createUserSchema>
 
-export const useRegister = ({toggleComponent}: Props) => {
+export const useRegister = ({}: Props) => {
+    const navigate = useNavigate()
+    const {setNotifications} = useNotificationStore()
     const {register, control, formState: {errors}, handleSubmit, setValue} = useForm<CreateUserSchema>({
         resolver: zodResolver(createUserSchema),
         defaultValues: {
@@ -30,12 +35,18 @@ export const useRegister = ({toggleComponent}: Props) => {
         }
     })
 
-
     const {mutate: send, isLoading} = useMutation({
         mutationFn: registerUser,
         mutationKey: ["registerUser"],
-        onSuccess: () => {
-            toggleComponent()
+        onSuccess: (r) => {
+            setNotifications({status: NotificationStatus.Check, text: r.data.message})
+            navigate('/dashboard', {
+                replace: true
+            })
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications})
         }
     })
 
