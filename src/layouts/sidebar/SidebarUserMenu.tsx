@@ -14,15 +14,16 @@ const SidebarUserMenu = () => {
     mutationFn: logout,
     mutationKey: ['logout'],
     onSuccess: () => {
+      localStorage.removeItem('isLogged')
       navigate('/', { replace: true })
     },
   })
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <Styles.Card onClick={() => handleLogout.mutate()}>
         {/* <Styles.Icon src={theme === 'light' ? SunIcon : MoonIcon} active /> */}
-        <Styles.Text>Sair </Styles.Text>
+        <Styles.Text onClick={() => handleLogout.mutate()}>Sair </Styles.Text>
       </Styles.Card>
       <Styles.Card onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
         <Styles.Icon src={theme === 'light' ? SunIcon : MoonIcon} active />
