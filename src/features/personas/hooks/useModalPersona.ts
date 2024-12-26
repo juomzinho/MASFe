@@ -3,6 +3,9 @@ import { PersonaSchema } from "./useFormPersona"
 import updatePersona from "../services/updatePersona"
 import createPersona from "../services/createPersona"
 import deletePersona from "../services/deletePersona"
+import { handleError } from "../../../utils/handleError/handleError"
+import { useNotificationStore } from "../../../store/notifications"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
     edit?: PersonaSchema
@@ -11,12 +14,18 @@ interface Props {
 
 export const useModalPersona = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
+    const {setNotifications} = useNotificationStore()
+    const navigate = useNavigate()
 
     const {mutate: send, isLoading: isUpdating} = useMutation({
         mutationFn: edit?updatePersona:createPersona,
         mutationKey: ["updatePersona"],
         onSuccess: () => {
             queryClient.refetchQueries(['personas'])
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 
@@ -26,6 +35,10 @@ export const useModalPersona = ({edit, close}: Props) => {
         onSuccess: () => {
             queryClient.refetchQueries(['personas'])
             close(false)
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 

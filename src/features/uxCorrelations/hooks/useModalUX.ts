@@ -5,6 +5,9 @@ import {  useState } from "react"
 import fetchUXById from "../services/fetchUXById"
 import deleteUX from "../services/deleteUX"
 import updateUX from "../services/updateUX"
+import { handleError } from "../../../utils/handleError/handleError"
+import { useNotificationStore } from "../../../store/notifications"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
     edit?: UXProps
@@ -24,6 +27,8 @@ export const useModalUX = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
     const [content, toggleContent] = useState(Content.Register)
     const [result, setResult] = useState<any>(null)
+    const {setNotifications} = useNotificationStore()
+    const navigate = useNavigate()
 
     const {isLoading: isGeting, isFetching} = useQuery({
         queryFn: () => fetchUXById({id: edit?.id??''}),
@@ -32,6 +37,10 @@ export const useModalUX = ({edit, close}: Props) => {
         onSuccess: (r) => {
             setResult(r.data.content)
             toggleContent(Content.Result)
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 
@@ -43,6 +52,10 @@ export const useModalUX = ({edit, close}: Props) => {
             toggleContent(Content.Result)
             setResult(r.data.content)
             console.log(r.data)
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 
@@ -52,6 +65,10 @@ export const useModalUX = ({edit, close}: Props) => {
         onSuccess: () => {
             queryClient.refetchQueries(['uxs'])
             close(false)
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 

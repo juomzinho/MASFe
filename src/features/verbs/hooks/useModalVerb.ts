@@ -4,6 +4,9 @@ import updateVerb from "../services/updateVerb"
 import deleteVerb from "../services/deleteVerb"
 import createVerb from "../services/createVerb"
 import fetchVerbById from "../services/fetchVerbById"
+import { useNavigate } from "react-router-dom"
+import { useNotificationStore } from "../../../store/notifications"
+import { handleError } from "../../../utils/handleError/handleError"
 interface Props {
     edit?: VerbSchema
     close: (value: boolean) => void    
@@ -11,11 +14,18 @@ interface Props {
 
 export const useModalVerb = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
+    const {setNotifications} = useNotificationStore()
+    const navigate = useNavigate()
+        
 
     const {data, isLoading: isGeting} = useQuery({
         queryFn: ()=>fetchVerbById({id: edit?.id??""}),
         queryKey: ['verb', edit?.id],
-        enabled: !!edit?.id
+        enabled: !!edit?.id,
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
+        }
     })
 
     const {mutate: send, isLoading: isUpdating} = useMutation({
@@ -23,6 +33,10 @@ export const useModalVerb = ({edit, close}: Props) => {
         mutationKey: ["updateVerb"],
         onSuccess: () => {
             queryClient.refetchQueries(['verbs'])
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 
@@ -32,6 +46,10 @@ export const useModalVerb = ({edit, close}: Props) => {
         onSuccess: () => {
             queryClient.refetchQueries(['verbs'])
             close(false)
+        },
+        onError: (e: any) => {
+            const {code, message} = e.response.data
+            handleError({code, message, setNotifications, navigate})
         }
     })
 
