@@ -87,7 +87,7 @@ export const useModalUX = ({edit, close}: Props) => {
 
     return {
         handleRequest, 
-        handleDelete: edit?handleDelete:undefined, 
+        handleDelete: result?handleDelete:undefined, 
         isLoading: isDeleting || isGeting || isFetching,
         isGen: isUpdating,
         result,

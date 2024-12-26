@@ -11,6 +11,7 @@ export const Container = styled.div`
   background: ${(p) => p.theme.color.modalBG};
   justify-content: center;
   align-items: center;
+  transition: 0.5s;
   z-index: 10;
 `
 export const AnimateOpen = keyframes`
@@ -24,8 +25,8 @@ export const AnimateOpen = keyframes`
 export const Content = styled.div`
   width: 700px;
   max-height: 75%;
-  min-height: 10%;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   gap: ${(p) => p.theme.spacing.content};
   border-radius: ${(p) => p.theme.border.radius};
@@ -40,7 +41,7 @@ export const Content = styled.div`
 
 export const Scroll = styled.div`
   width: 100%;
-  height: 500px;
+  max-height: 50vh;
   overflow-y: scroll;
 `
 
@@ -56,6 +57,7 @@ export const Footer = styled.div`
 `
 export const ContentWrapper = styled.div`
   width: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   gap: ${(p) => p.theme.spacing.item};
@@ -64,4 +66,44 @@ export const ContentWrapper = styled.div`
 export const Text = styled.p`
   color: ${(p) => p.theme.color.primary.text};
   font-size: ${(p) => p.theme.font.default};
+`
+
+const rotate = keyframes`
+    100%   {transform: rotate(360deg)}
+`
+
+const prixClipFix = keyframes`
+        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+
+`
+
+export const Spinner = styled.div`
+  .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    animation: ${rotate} 1s linear infinite;
+  }
+  .loader::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid ${(p) => p.theme.color.primary.text};
+    animation: ${prixClipFix} 2s linear infinite;
+  }
 `

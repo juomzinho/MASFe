@@ -3,7 +3,6 @@ import Modal, { ModalContentWrapper, ModalHeader } from '../../../../components/
 import { PersonaSchema } from '../../hooks/useFormPersona'
 import FormPersona from './FormPersona'
 import { useModalPersona } from '../../hooks/useModalPersona'
-import Loader from '../../../../components/loader/Loader'
 
 interface Props {
   close: (value: boolean) => void
@@ -11,11 +10,11 @@ interface Props {
 }
 
 const ModalPersona = ({ close, edit }: Props) => {
-  const { handleRequest, handleDelete, isLoading } = useModalPersona({ edit, close })
+  const { handleRequest, handleDelete, isLoading, data } = useModalPersona({ edit, close })
   const ref = useRef<HTMLButtonElement>(null)
 
   return (
-    <Modal>
+    <Modal loading={isLoading}>
       <ModalHeader
         title={`${edit ? 'Editar' : 'Cadastrar'} persona`}
         close={close}
@@ -23,9 +22,8 @@ const ModalPersona = ({ close, edit }: Props) => {
         handleAction={() => ref.current?.click()}
       />
       <ModalContentWrapper>
-        <FormPersona submit={handleRequest} ref={ref} edit={edit} />
+        <FormPersona submit={handleRequest} ref={ref} edit={data} />
       </ModalContentWrapper>
-      {isLoading && <Loader />}
     </Modal>
   )
 }

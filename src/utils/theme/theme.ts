@@ -6,6 +6,7 @@ const defaultValues = {
     
       font: {
         small: "0.7rem",
+        medium: "0.8rem",
         default: "1rem",
         large: "1.5rem",
         big: "2rem",

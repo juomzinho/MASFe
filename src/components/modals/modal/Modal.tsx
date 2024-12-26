@@ -9,7 +9,17 @@ interface Props {
 const Modal = ({ children, loading }: Props) => {
   return (
     <Styles.Container>
-      <Styles.Content>{loading ? <p>Carregando</p> : children}</Styles.Content>
+      <Styles.Content>
+        {loading ? (
+          <Styles.Spinner>
+            <div className="content">
+              <div className="loader"></div>
+            </div>
+          </Styles.Spinner>
+        ) : (
+          children
+        )}
+      </Styles.Content>
     </Styles.Container>
   )
 }

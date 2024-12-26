@@ -23,7 +23,7 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
           {
             data: data.map((item, id) => ({ id, label: item.name, value: item.value })),
             innerRadius: 95,
-          outerRadius: 75,
+            outerRadius: 75,
             highlightScope: { fade: 'global', highlight: 'item' },
           },
         ]}
@@ -53,12 +53,14 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
         width={width}
       />
       <Styles.CaptionContent>
-        {data.map((item, index) => (
-          <Styles.Caption key={index}>
-            <Styles.PercentageText>{getPercentage()[index]}%</Styles.PercentageText>
-            <Styles.CaptionTitle color={colors[index]}>{item.name}</Styles.CaptionTitle>
-          </Styles.Caption>
-        ))}
+        {data
+          .sort((a, b) => b.value - a.value)
+          .map((item, index) => (
+            <Styles.Caption key={index}>
+              <Styles.PercentageText>{getPercentage()[index]}%</Styles.PercentageText>
+              <Styles.CaptionTitle color={colors[index]}>{item.name}</Styles.CaptionTitle>
+            </Styles.Caption>
+          ))}
       </Styles.CaptionContent>
     </Styles.Content>
   )

@@ -17,12 +17,15 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   padding: 10px;
+  z-index: 20;
   box-sizing: border-box;
   border-radius: 12px;
   display: flex;
   gap: 10px;
   align-items: center;
   border: none;
+  -webkit-box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
+  box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
   background: ${(p) => p.theme.color.primary.color};
 `
 export const Icon = styled.img`

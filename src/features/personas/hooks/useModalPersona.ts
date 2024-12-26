@@ -4,8 +4,10 @@ import updatePersona from "../services/updatePersona"
 import createPersona from "../services/createPersona"
 import deletePersona from "../services/deletePersona"
 import { handleError } from "../../../utils/handleError/handleError"
-import { useNotificationStore } from "../../../store/notifications"
+import { NotificationStatus, useNotificationStore } from "../../../store/notifications"
 import { useNavigate } from "react-router-dom"
+import { AxiosResponse } from "axios"
+import { useState } from "react"
 
 interface Props {
     edit?: PersonaSchema
@@ -16,12 +18,15 @@ export const useModalPersona = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
     const {setNotifications} = useNotificationStore()
     const navigate = useNavigate()
+    const [data, setData] = useState<PersonaSchema | null>(edit??null)
 
     const {mutate: send, isLoading: isUpdating} = useMutation({
-        mutationFn: edit?updatePersona:createPersona,
+        mutationFn: data?updatePersona:createPersona,
         mutationKey: ["updatePersona"],
-        onSuccess: () => {
+        onSuccess: (r: AxiosResponse) => {
             queryClient.refetchQueries(['personas'])
+            setNotifications({status: NotificationStatus.Check, text: r.data.message})
+            setData(r.data.content)
         },
         onError: (e: any) => {
             const {code, message} = e.response.data
@@ -32,8 +37,9 @@ export const useModalPersona = ({edit, close}: Props) => {
     const {mutate: mutateDelete, isLoading: isDeleting} = useMutation({
         mutationFn: deletePersona,
         mutationKey: ["deletePersona"],
-        onSuccess: () => {
+        onSuccess: (r: AxiosResponse) => {
             queryClient.refetchQueries(['personas'])
+            setNotifications({status: NotificationStatus.Check, text: r.data.message})
             close(false)
         },
         onError: (e: any) => {
@@ -42,11 +48,12 @@ export const useModalPersona = ({edit, close}: Props) => {
         }
     })
 
-    const handleRequest = (data: PersonaSchema) => {
-        if(edit){
-            send({data, id: edit.id??""})
+    const handleRequest = (persona: PersonaSchema) => {
+        if(data){
+            console.log(data)
+            send({data: persona, id: data.id??""})
         }else{
-            send({data, id: ""})
+            send({data: persona, id: ""})
         }
     }
 
@@ -55,6 +62,7 @@ export const useModalPersona = ({edit, close}: Props) => {
     }
 
     return {
+        data,
         handleRequest, 
         handleDelete: edit?handleDelete:undefined, 
         isLoading: isUpdating || isDeleting

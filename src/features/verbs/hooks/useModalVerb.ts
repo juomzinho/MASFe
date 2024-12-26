@@ -5,8 +5,10 @@ import deleteVerb from "../services/deleteVerb"
 import createVerb from "../services/createVerb"
 import fetchVerbById from "../services/fetchVerbById"
 import { useNavigate } from "react-router-dom"
-import { useNotificationStore } from "../../../store/notifications"
+import { NotificationStatus, useNotificationStore } from "../../../store/notifications"
 import { handleError } from "../../../utils/handleError/handleError"
+import { AxiosResponse } from "axios"
+import { useState } from "react"
 interface Props {
     edit?: VerbSchema
     close: (value: boolean) => void    
@@ -16,23 +18,28 @@ export const useModalVerb = ({edit, close}: Props) => {
     const queryClient = useQueryClient()
     const {setNotifications} = useNotificationStore()
     const navigate = useNavigate()
-        
+    const [data, setData] = useState<VerbSchema | null>(edit??null)        
 
-    const {data, isLoading: isGeting} = useQuery({
+    const {isLoading: isGeting} = useQuery({
         queryFn: ()=>fetchVerbById({id: edit?.id??""}),
         queryKey: ['verb', edit?.id],
         enabled: !!edit?.id,
         onError: (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
+        },
+        onSuccess: (r: AxiosResponse) => {
+            setData(r.data.content)
         }
     })
 
     const {mutate: send, isLoading: isUpdating} = useMutation({
-        mutationFn: edit?updateVerb:createVerb,
+        mutationFn: data?updateVerb:createVerb,
         mutationKey: ["updateVerb"],
-        onSuccess: () => {
+        onSuccess: (r: AxiosResponse) => {
             queryClient.refetchQueries(['verbs'])
+            setNotifications({status: NotificationStatus.Check, text: r.data.message})
+            setData(r.data.content)
         },
         onError: (e: any) => {
             const {code, message} = e.response.data
@@ -43,8 +50,9 @@ export const useModalVerb = ({edit, close}: Props) => {
     const {mutate: mutateDelete, isLoading: isDeleting} = useMutation({
         mutationFn: deleteVerb,
         mutationKey: ["deleteVerb"],
-        onSuccess: () => {
+        onSuccess: (r: AxiosResponse) => {
             queryClient.refetchQueries(['verbs'])
+            setNotifications({status: NotificationStatus.Check, text: r.data.message})
             close(false)
         },
         onError: (e: any) => {
@@ -53,28 +61,36 @@ export const useModalVerb = ({edit, close}: Props) => {
         }
     })
 
-    const handleRequest = (data: VerbSchema) => {
-        if(edit){
-            send({data, id: edit.id??""})
-            let obj: any = {}
-            Object.entries(data).forEach(element => {
-                if(!element[1]) Object.assign(obj, {[element[0]]: true})
+    const handleRequest = (verb: VerbSchema) => {
+        if(data){
+            let obj: any = {add: {}, remove: {removeGarret: true}}
+            let hasRemove = false
+            let hasAdd = false
+            Object.entries(verb).forEach(element => {
+                if(!element[1]) {
+                    hasRemove = true
+                    Object.assign(obj.remove, {[element[0]]: true})
+                }else if(element[1]){
+                    hasAdd = true
+                    Object.assign(obj.add, {[element[0]]: true})
+                }
             });
-            send({data: {...obj, removeGarret: true}, id: edit.id??""})
+            if(hasAdd) send({data: obj.add, id: data.id??""})
+            if(hasRemove) send({data: obj.remove, id: data.id??""})
         }else{
-            send({data, id: ""})
+            send({data: verb, id: ""})
         }
     }
 
     const handleDelete = () => {
-        console.log("delete")
-        mutateDelete({id: edit?.id??""})
+        console.log(data)
+        mutateDelete({id: data?.id??""})
     }
 
     return {
         handleRequest, 
-        handleDelete: edit?handleDelete:undefined, 
+        handleDelete: data?handleDelete:undefined, 
         isLoading: isUpdating || isDeleting || isGeting,
-        data: data?.data.content??edit
+        data
     } 
 }

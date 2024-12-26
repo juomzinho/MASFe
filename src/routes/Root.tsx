@@ -16,7 +16,7 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 20000,
+      cacheTime: 0,
     },
   },
 })
@@ -25,8 +25,18 @@ const Root = () => {
   const { theme, setTheme } = useThemeStore()
 
   useEffect(() => {
-    const getCurrentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setTheme(getCurrentTheme ? 'dark' : 'light')
+    const themeStorage = localStorage.getItem('theme-storage')
+    if (themeStorage) {
+      const get = (): 'dark' | 'light' => {
+        if (themeStorage === 'light') return 'light'
+        return 'dark'
+      }
+      setTheme(get())
+    } else {
+      const getCurrentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      setTheme(getCurrentTheme ? 'dark' : 'light')
+      localStorage.setItem('theme-storage', getCurrentTheme ? 'dark' : 'light')
+    }
   }, [])
 
   return (

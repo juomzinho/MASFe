@@ -11,12 +11,13 @@ const UXGenerating = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (dots.length === 3) {
-        setDots('')
-      } else {
-        setDots((old) => old + '.')
-      }
-    }, 500)
+      setDots((old) => {
+        if (old.length === 0) return '.'
+        if (old.length === 1) return '..'
+        if (old.length === 2) return '...'
+        return ''
+      })
+    }, 650)
 
     return () => clearInterval(interval)
   }, [true])
@@ -24,9 +25,9 @@ const UXGenerating = () => {
   return (
     <Modal>
       <ModalContentWrapper>
-        <Styles.Row>
+        <Styles.Row style={{ justifyContent: 'center' }}>
           <Styles.Icon src={Icons[theme].ai} />
-          <Text text={'Gerando sua história de usuário isso pode demorar um pouco ' + dots} size={'default'} />
+          <Text text={'Gerando sua história de usuário' + dots} size={'default'} />
         </Styles.Row>
       </ModalContentWrapper>
     </Modal>

@@ -7,7 +7,7 @@ interface Props {
     name: string
     value: number
   }[]
-  width: number,
+  width: number
   hiddenLegend?: boolean
 }
 
@@ -15,11 +15,11 @@ const Chart = ({ data, width }: Props) => {
   const { theme } = useThemeStore()
   return (
     <BarChart
-    height={300}
+      height={300}
       width={width}
       series={[
         {
-          data: data.map((item) => item.value),
+          data: data.sort((a, b) => b.value - a.value).map((item) => item.value),
           type: 'bar',
           color: '#5121FF',
           highlightScope: { highlight: 'item', fade: 'global' },
