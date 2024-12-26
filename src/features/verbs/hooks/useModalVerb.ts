@@ -57,6 +57,6 @@ export const useModalVerb = ({edit, close}: Props) => {
         handleRequest, 
         handleDelete: edit?handleDelete:undefined, 
         isLoading: isUpdating || isDeleting || isGeting,
-        data: data?.data??edit
+        data: data?.data.content??edit
     } 
 }
