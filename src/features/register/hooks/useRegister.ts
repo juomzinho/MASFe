@@ -40,6 +40,7 @@ export const useRegister = ({}: Props) => {
         mutationKey: ["registerUser"],
         onSuccess: (r) => {
             setNotifications({status: NotificationStatus.Check, text: r.data.message})
+            localStorage.setItem("isLogged","true")
             navigate('/dashboard', {
                 replace: true
             })

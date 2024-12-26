@@ -12,7 +12,7 @@ export const useHome = () => {
         queryFn: fetchDashboard,
         queryKey: ["dashboard"],
         onError: (e: any) => {
-            const {code, message} = e.response.code
+            const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }
     })

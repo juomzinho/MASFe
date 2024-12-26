@@ -27,6 +27,7 @@ export const useLogin = () => {
         mutationFn: auth,
         mutationKey: ["registerUser"],
         onSuccess: () => {
+            localStorage.setItem("isLogged","true")
             navigate('/dashboard', {
                 replace: true
             })
