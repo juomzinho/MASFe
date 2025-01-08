@@ -32,9 +32,9 @@ export const useLogin = () => {
                 replace: true
             })
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
-            handleError({code, message, setNotifications})
+            handleError({code, message, setNotifications, navigate})
         }
     })
 

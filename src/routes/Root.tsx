@@ -16,7 +16,7 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 0,
+      cacheTime: 100000,
     },
   },
 })

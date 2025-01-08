@@ -24,7 +24,7 @@ export const useModalVerb = ({edit, close}: Props) => {
         queryFn: ()=>fetchVerbById({id: edit?.id??""}),
         queryKey: ['verb', edit?.id],
         enabled: !!edit?.id,
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         },
@@ -41,7 +41,7 @@ export const useModalVerb = ({edit, close}: Props) => {
             setNotifications({status: NotificationStatus.Check, text: r.data.message})
             setData(r.data.content)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }
@@ -55,7 +55,7 @@ export const useModalVerb = ({edit, close}: Props) => {
             setNotifications({status: NotificationStatus.Check, text: r.data.message})
             close(false)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }

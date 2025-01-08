@@ -38,7 +38,7 @@ export const useModalUX = ({edit, close}: Props) => {
             setResult(r.data.content)
             toggleContent(Content.Result)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }
@@ -53,7 +53,7 @@ export const useModalUX = ({edit, close}: Props) => {
             setResult(r.data.content)
             console.log(r.data)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }
@@ -66,7 +66,7 @@ export const useModalUX = ({edit, close}: Props) => {
             queryClient.refetchQueries(['uxs'])
             close(false)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }

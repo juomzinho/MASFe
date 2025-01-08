@@ -35,7 +35,7 @@ export const useUX = () => {
         onSuccess: (r) => {
             setFiltered(r.data.content)
         },
-        onError: (e: any) => {
+        onError: async (e: any) => {
             const {code, message} = e.response.data
             handleError({code, message, setNotifications, navigate})
         }

@@ -11,9 +11,10 @@ export const useHome = () => {
     const {data, isLoading, isFetching} = useQuery({
         queryFn: fetchDashboard,
         queryKey: ["dashboard"],
-        onError: (e: any) => {
+        onError: async (e: any) => {
+            navigate('/')
             const {code, message} = e.response.data
-            handleError({code, message, setNotifications, navigate})
+            await handleError({code, message, setNotifications, navigate})
         }
     })
 
