@@ -23,6 +23,7 @@ import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
 import { useHome } from '../../hooks/useHome'
 import Loader from '../../../../components/loader/Loader'
 import Title from '../../../../components/texts/title/Title'
+import NotFound from '../../../../components/errors/notFound/NotFound'
 
 const Home = () => {
   const { setContent } = useContentStore()
@@ -74,6 +75,7 @@ const Home = () => {
             alignContent: 'flex-start',
           }}
         >
+          {data.uxCorrelations.length === 0 && <NotFound title="ux correlations" />}
           {data?.uxCorrelations?.map((item: any, index: number) => {
             return (
               <ButtonCard key={index.toString()} full action={() => toggleUX(item)}>

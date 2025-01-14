@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Login from '../../features/login/components/Login'
 import Container from '../../layouts/container/Container'
 import Register from '../../features/register/components/Register'
+import { useAuth } from './hooks/useAuth'
 // import { useAuth } from './hooks/useAuth'
 
 export enum AuthContent {
@@ -11,7 +12,7 @@ export enum AuthContent {
 
 const Authentication = () => {
   const [content, toggleContent] = useState(AuthContent.Login)
-  // const {} = useAuth()
+  const {} = useAuth()
 
   const getContent = () => {
     switch (content) {

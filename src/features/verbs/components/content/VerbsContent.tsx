@@ -11,6 +11,7 @@ import { VerbSchema } from '../../hooks/useFormVerb'
 import { useState } from 'react'
 import ModalVerb from '../modalVerb/ModalVerb'
 import { Dimension } from '../../../../utils/defines/dimension'
+import NotFound from '../../../../components/errors/notFound/NotFound'
 
 interface Props {
   data: VerbSchema[]
@@ -18,9 +19,11 @@ interface Props {
 
 const VerbsContent = ({ data }: Props) => {
   const [verb, setVerb] = useState<VerbSchema | null>(null)
+  const [modalVerb, toggleVerb] = useState(false)
 
   return (
     <ContentWrapper>
+      {data.length === 0 && <NotFound title="verbos" action={() => toggleVerb(true)} />}
       {data.map((item: any, index: number) => {
         return (
           <ButtonCard key={index.toString()} action={() => setVerb(item)}>
@@ -32,6 +35,7 @@ const VerbsContent = ({ data }: Props) => {
           </ButtonCard>
         )
       })}
+      {modalVerb && <ModalVerb close={toggleVerb} />}
       {verb && <ModalVerb edit={verb} close={() => setVerb(null)} />}
     </ContentWrapper>
   )

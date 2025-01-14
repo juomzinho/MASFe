@@ -8,6 +8,7 @@ import ModalUX from '../modalUX/ModalUX'
 import { Dimension } from '../../../../utils/defines/dimension'
 import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
 import eficacyIcon from '../../../../assets/icons/eficacy.svg'
+import NotFound from '../../../../components/errors/notFound/NotFound'
 
 interface Props {
   data: UXProps[]
@@ -15,8 +16,10 @@ interface Props {
 
 const UXContent = ({ data }: Props) => {
   const [ux, setUX] = useState<UXProps | null>(null)
+  const [modalUX, toggleUX] = useState(false)
   return (
     <ContentWrapper>
+       {data.length === 0 && <NotFound title="ux correlations" action={() => toggleUX(true)} />}
       {data.map((item: any, index: number) => {
         return (
           <ButtonCard key={index.toString()} action={() => setUX(item)}>
@@ -29,6 +32,7 @@ const UXContent = ({ data }: Props) => {
           </ButtonCard>
         )
       })}
+      {modalUX && <ModalUX close={toggleUX} />}
       {ux && <ModalUX edit={ux} close={() => setUX(null)} />}
     </ContentWrapper>
   )
