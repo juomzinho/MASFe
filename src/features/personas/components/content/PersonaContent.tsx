@@ -15,7 +15,7 @@ const PersonaContent = ({ data }: Props) => {
   const [modalPersona, togglePersona] = useState(false)
   return (
     <ContentWrapper>
-      {data.length === 0 && <NotFound title="personas" action={() => togglePersona(true)} />}
+      {data?.length === 0 && <NotFound title="personas" action={() => togglePersona(true)} />}
       {data.map((item: any, index: number) => {
         return (
           <ButtonCard key={index.toString()} action={() => setPersona(item)}>

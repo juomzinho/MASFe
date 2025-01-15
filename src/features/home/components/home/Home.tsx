@@ -75,7 +75,7 @@ const Home = () => {
             alignContent: 'flex-start',
           }}
         >
-          {data.uxCorrelations.length === 0 && <NotFound title="ux correlations" />}
+          {data?.uxCorrelations?.length === 0 && <NotFound title="ux correlations" />}
           {data?.uxCorrelations?.map((item: any, index: number) => {
             return (
               <ButtonCard key={index.toString()} full action={() => toggleUX(item)}>

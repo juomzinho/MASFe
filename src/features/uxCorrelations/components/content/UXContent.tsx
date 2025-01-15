@@ -19,7 +19,7 @@ const UXContent = ({ data }: Props) => {
   const [modalUX, toggleUX] = useState(false)
   return (
     <ContentWrapper>
-       {data.length === 0 && <NotFound title="ux correlations" action={() => toggleUX(true)} />}
+      {data?.length === 0 && <NotFound title="ux correlations" action={() => toggleUX(true)} />}
       {data.map((item: any, index: number) => {
         return (
           <ButtonCard key={index.toString()} action={() => setUX(item)}>
