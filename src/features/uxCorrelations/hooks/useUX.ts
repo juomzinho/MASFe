@@ -20,6 +20,7 @@ export interface ResultUXProps {
         verb: string
     }
     description: string
+    dimension: number
 }
 
 export const useUX = () => {

@@ -45,3 +45,18 @@ export const Row = styled.div`
 export const FormText = styled.h1`
   color: ${p => p.theme.color.primary.text};
 `
+
+export const Card = styled.div`
+  background: ${p => p.theme.defaultColors.default};
+  padding: ${p => p.theme.spacing.content};
+  border: ${p => p.theme.border.style} ${p => p.theme.defaultColors.default};
+  border-radius: ${p => p.theme.border.radius};
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+export const Header = styled.div`
+  margin-bottom: 20px;
+  text-align: center;
+`

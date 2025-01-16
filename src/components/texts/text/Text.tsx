@@ -2,7 +2,7 @@ import * as Styles from './Styles'
 
 interface Props {
   text: string
-  size?: 'small' | 'default'
+  size?: 'small' | 'default' | 'large'
 }
 
 const Text = ({ text, size }: Props) => {

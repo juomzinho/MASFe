@@ -17,7 +17,7 @@ const ActionModal = ({ action, handleAction, cancel }: Props) => {
       </ModalContentWrapper>
       <ModalFooter>
         <Button title={action} action={handleAction} color="red" />
-        <Button title="Cancelar" action={cancel} color="default" />
+        <Button title="Cancelar" action={cancel} color="action" />
       </ModalFooter>
     </Modal>
   )

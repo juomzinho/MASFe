@@ -1,7 +1,7 @@
 const defaultValues = {
       border: {
         radius: "15px",
-        style: "2px solid #736681",
+        style: "2px solid ",
       },
     
       font: {
@@ -26,6 +26,7 @@ const defaultValues = {
         red: "#D40808",
         blue: "#311499",
         green: "#40916c",
+        action: "#31363F",
         gradient: "linear-gradient(138deg, rgba(81,33,255,1) 0%, rgba(49,20,153,1) 64%);"
       }
 }
