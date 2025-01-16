@@ -9,6 +9,7 @@ import { Dimension } from '../../../../utils/defines/dimension'
 import eficiencyIcon from '../../../../assets/icons/efficiency.svg'
 import eficacyIcon from '../../../../assets/icons/eficacy.svg'
 import NotFound from '../../../../components/errors/notFound/NotFound'
+import Text from '../../../../components/texts/text/Text'
 
 interface Props {
   data: UXProps[]
@@ -28,7 +29,10 @@ const UXContent = ({ data }: Props) => {
               <ButtonCardText text={item.verb} />
               <ButtonCardText text={item.user.name} />
             </ButtonColumnWrapper>
-            <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
+            <div>
+              <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
+              <Text text={Dimension[item.dimension]} />
+            </div>
           </ButtonCard>
         )
       })}

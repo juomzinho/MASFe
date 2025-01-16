@@ -24,6 +24,7 @@ import { useHome } from '../../hooks/useHome'
 import Loader from '../../../../components/loader/Loader'
 import Title from '../../../../components/texts/title/Title'
 import NotFound from '../../../../components/errors/notFound/NotFound'
+import Text from '../../../../components/texts/text/Text'
 
 const Home = () => {
   const { setContent } = useContentStore()
@@ -84,7 +85,10 @@ const Home = () => {
                   <ButtonCardText text={Garret[item.garret]} />
                   <ButtonCardUser name={item.user.name} />
                 </ButtonColumnWrapper>
+                <div>
                 <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
+                <Text text={Dimension[item.dimension]} />
+              </div>
               </ButtonCard>
             )
           })}

@@ -36,7 +36,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
         />
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <Styles.FormText>quero que o sistema </Styles.FormText>
+        <Styles.FormText>, quero </Styles.FormText>
         <FormSelect
           title="Verbos"
           control={control}
@@ -45,6 +45,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
           error={errors.verb_id}
         />
       </div>
+      <FormTextArea title="Descrição da História de Usuário" {...register('description')} error={errors.name} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Styles.FormText>com foco em </Styles.FormText>
         <FormSelect
@@ -55,7 +56,6 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
           error={errors.dimension}
         />
       </div>
-      <FormTextArea title="Descrição da História de Usuário" {...register('description')} error={errors.name} />
       <button type="submit" ref={ref} style={{ display: 'none' }} />
     </Form>
   )

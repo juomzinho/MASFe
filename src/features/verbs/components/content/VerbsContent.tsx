@@ -12,6 +12,7 @@ import { useState } from 'react'
 import ModalVerb from '../modalVerb/ModalVerb'
 import { Dimension } from '../../../../utils/defines/dimension'
 import NotFound from '../../../../components/errors/notFound/NotFound'
+import Text from '../../../../components/texts/text/Text'
 
 interface Props {
   data: VerbSchema[]
@@ -31,7 +32,10 @@ const VerbsContent = ({ data }: Props) => {
               <ButtonCardTitle title={item.verb} />
               <ButtonCardUser name={item.user.name} />
             </ButtonColumnWrapper>
-            <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
+            <div>
+              <ButtonCardIcon icon={item.dimension === Dimension['Eficiência'] ? eficiencyIcon : eficacyIcon} />
+              <Text text={Dimension[item.dimension]} size='small' />
+            </div>
           </ButtonCard>
         )
       })}
