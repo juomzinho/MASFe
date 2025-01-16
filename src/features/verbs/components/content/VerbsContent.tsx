@@ -24,7 +24,7 @@ const VerbsContent = ({ data }: Props) => {
 
   return (
     <ContentWrapper>
-      {data?.length === 0 && <NotFound title="verbos" action={() => toggleVerb(true)} />}
+      {data?.length === 0 && <NotFound title="verbo" masc action={() => toggleVerb(true)} />}
       {data.map((item: any, index: number) => {
         return (
           <ButtonCard key={index.toString()} action={() => setVerb(item)}>

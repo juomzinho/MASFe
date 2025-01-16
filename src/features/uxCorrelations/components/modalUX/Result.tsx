@@ -22,7 +22,7 @@ const ResultUX = ({ result, toggleContent, close, handleDelete }: Props) => {
       />
       <ModalScroll>
         <Title
-          title={`Eu ${result.persona.name}, quero que o sistema ${result.verb.verb}, ${result.description}`}
+          title={`Eu ${result.persona.name}, quero ${result.verb.verb}, ${result.description}`}
           size="default"
         />
 
