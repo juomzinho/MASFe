@@ -13,9 +13,16 @@ export const PercentageText = styled.p`
   color: ${(p) => p.theme.color.primary.text};
   font-size: ${(p) => p.theme.font.small};
 `
-export const CaptionTitle = styled.p<{ color: string }>`
-  color: ${(p) => p.color};
+export const CaptionTitle = styled.p`
+  color: ${(p) => p.theme.color.primary.text};
   font-size: ${(p) => p.theme.font.medium};
+`
+
+export const Color = styled.div<{ color: string }>`
+  width: 15px;
+  height: 15px;
+  background:  ${(p) => p.color};
+  border-radius: 5px;
 `
 
 export const CaptionContent = styled.div`

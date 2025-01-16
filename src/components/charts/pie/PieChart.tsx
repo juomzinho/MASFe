@@ -1,6 +1,4 @@
 import { pieArcClasses, PieChart } from '@mui/x-charts'
-import { useThemeStore } from '../../../store/theme'
-import { darkTheme, lightTheme } from '../../../utils/theme/theme'
 import * as Styles from './Styles'
 import { usePieChart } from './hooks/usePieChart'
 
@@ -15,13 +13,12 @@ interface Props {
 
 const Chart = ({ data, hiddenLegend, width }: Props) => {
   const { getPercentage, colors } = usePieChart({ data })
-  const { theme } = useThemeStore()
   return (
     <Styles.Content>
       <PieChart
         series={[
           {
-            data: data.map((item, id) => ({ id, label: item.name, value: item.value })),
+            data: data.sort((a, b) => b.value - a.value).map((item, id) => ({ id, label: item.name, value: item.value })),
             innerRadius: 95,
             outerRadius: 75,
             highlightScope: { fade: 'global', highlight: 'item' },
@@ -35,14 +32,6 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
           },
           legend: {
             hidden: hiddenLegend,
-            markGap: 2,
-            padding: 0,
-            itemMarkHeight: 4,
-            itemMarkWidth: 10,
-            labelStyle: {
-              fill: theme === 'light' ? lightTheme.color.primary.text : darkTheme.color.primary.text,
-              fontSize: 10.55,
-            },
           },
         }}
         sx={() => ({
@@ -58,7 +47,8 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
           .map((item, index) => (
             <Styles.Caption key={index}>
               <Styles.PercentageText>{getPercentage()[index]}%</Styles.PercentageText>
-              <Styles.CaptionTitle color={colors[index]}>{item.name}</Styles.CaptionTitle>
+              <Styles.CaptionTitle >{item.name}</Styles.CaptionTitle>
+              <Styles.Color color={colors[index]} />
             </Styles.Caption>
           ))}
       </Styles.CaptionContent>
