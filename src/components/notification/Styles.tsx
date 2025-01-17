@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   padding: 10px;
-  z-index: 20;
+  z-index: 31;
   box-sizing: border-box;
   border-radius: 12px;
   display: flex;

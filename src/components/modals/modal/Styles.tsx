@@ -13,7 +13,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.5s;
-  z-index: 10;
+  z-index: 25;
 `
 export const AnimateOpen = keyframes`
     from{
