@@ -5,6 +5,7 @@ export const Genders = [
 ]
 
 export const Occupations = [
+    "Usuário",
     "Designer",
     "Desenvolvedor",
     "Engenheiro de Software",

@@ -29,7 +29,7 @@ const ResultUX = ({ result, toggleContent, close, handleDelete }: Props) => {
             size='default'
           />
           <Title
-            title={`Eu, ${result.persona.name}, quero ${result.verb.verb}, ${result.description}.`}
+            title={`Eu, ${result.persona.name}, quero que o sistema possa ${result.verb.verb}, ${result.description}.`}
             size="large"
           />
           <Title
