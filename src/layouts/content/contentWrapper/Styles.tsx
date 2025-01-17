@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 export const ContentWrapper = styled.section`
@@ -12,4 +13,9 @@ export const ContentWrapper = styled.section`
   justify-content: flex-start;
   align-content: flex-start;
   gap: ${(p) => p.theme.spacing.item};
+  ${isMobile && `
+      height: calc(100vh - 180px);
+      overflow: scroll;
+      margin-top: 10px;
+  `}
 `

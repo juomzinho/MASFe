@@ -5,9 +5,12 @@ import UXCorrelations from '../../features/uxCorrelations/components/content/UXC
 import Verbs from '../../features/verbs/components/content/Verbs'
 import Personas from '../../features/personas/components/content/Personas'
 import Home from '../../features/home/components/home/Home'
+import {BrowserView, MobileView} from 'react-device-detect'
+import DashboardNavbar from './components/navbar/Navbar'
 
 const Dashboard = () => {
   const { content } = useContentStore()
+  
 
   const getContent = () => {
     console.log(content)
@@ -25,7 +28,12 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <DashboardSidebar />
+      <BrowserView>
+        <DashboardSidebar />
+      </BrowserView>
+      <MobileView>
+        <DashboardNavbar />
+      </MobileView>
       {getContent()}
     </Container>
   )

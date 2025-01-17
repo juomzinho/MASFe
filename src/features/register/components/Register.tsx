@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import Button from '../../../components/buttons/button/Button'
 import ButtonWithoutBg from '../../../components/buttons/buttonWithoutBg/Button'
 import Form from '../../../components/form/Form'
@@ -23,10 +24,10 @@ const Register = ({ toggleComponent }: Props) => {
       <Title title="Seja bem vindo" />
       <Text text="Realize seu cadastro e comece a criação de suas histórias de usuário" />
       <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-        <FormInput widthInput={'400px'} title="Nome" {...register('name', { required: true })} error={errors.name} />
-        <FormInput widthInput={'400px'} title="Email" {...register('email', { required: true })} error={errors.email} />
+        <FormInput widthInput={isMobile?'calc(100vw - 70px)':'400px'} title="Nome" {...register('name', { required: true })} error={errors.name} />
+        <FormInput widthInput={isMobile?'calc(100vw - 70px)':'400px'} title="Email" {...register('email', { required: true })} error={errors.email} />
         <FormInput
-          widthInput={'400px'}
+          widthInput={isMobile?'calc(100vw - 70px)':'400px'}
           passoword
           title="Senha"
           {...register('password', { required: true })}
@@ -46,7 +47,7 @@ const Register = ({ toggleComponent }: Props) => {
           {...register('birthday')}
           error={errors.birthday}
         />
-        <FormInput widthInput={'400px'} title="Profissão" {...register('occupation')} error={errors.occupation} />
+        <FormInput widthInput={isMobile?'calc(100vw - 70px)':'400px'} title="Profissão" {...register('occupation')} error={errors.occupation} />
         <Button title="Cadastrar" action={() => {}} type="submit" color="gradient" width={'400px'} />
       </Form>
       <div style={{ display: 'flex', gap: 5, width: '100%', justifyContent: 'center', marginTop: '-15px' }}>

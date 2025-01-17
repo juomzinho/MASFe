@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 export const Button = styled.button<{ full?: boolean }>`
@@ -15,6 +16,10 @@ export const Button = styled.button<{ full?: boolean }>`
   ${(p) => p.full && 'width: 100%;'}
   &:hover {
     opacity: 0.6;
+  }
+  ${isMobile && `
+      width: 100%;
+    `
   }
 `
 

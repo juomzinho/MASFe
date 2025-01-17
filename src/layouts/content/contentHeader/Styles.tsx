@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 export const Header = styled.header`
@@ -6,6 +7,12 @@ export const Header = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  ${isMobile && `
+    flex-direction: column; 
+    height: auto; 
+    text-align: center;
+    align-items: center;
+  `}
 `
 
 export const Title = styled.h1`

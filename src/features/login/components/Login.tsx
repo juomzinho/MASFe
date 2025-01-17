@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import Button from '../../../components/buttons/button/Button'
 import ButtonWithoutBg from '../../../components/buttons/buttonWithoutBg/Button'
 import Form from '../../../components/form/Form'
@@ -21,9 +22,9 @@ const Login = ({ toggleComponent }: Props) => {
       <Title title="Bem vindo de volta" />
       <Text text="Realize seu login e continue a criação de suas histórias de usuário" />
       <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-        <FormInput widthInput={'400px'} title="Email" {...register('email', { required: true })} error={errors.email} />
+        <FormInput widthInput={isMobile?'calc(100vw - 70px)':'400px'} title="Email" {...register('email', { required: true })} error={errors.email} />
         <FormInput
-          widthInput={'400px'}
+          widthInput={isMobile?'calc(100vw - 70px)':'400px'}
           title="Senha"
           passoword
           {...register('password', { required: true })}

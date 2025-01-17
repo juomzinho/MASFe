@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 export const Content = styled.section`
@@ -11,4 +12,11 @@ export const Content = styled.section`
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   gap: 10px;
+  ${isMobile && `
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 50px;
+  `}
 `

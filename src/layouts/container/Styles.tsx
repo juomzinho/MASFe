@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect';
 import styled from 'styled-components'
 
 export const Container = styled.main`
@@ -7,4 +8,7 @@ export const Container = styled.main`
   display: flex;
   position: relative;
   padding: ${(p) => p.theme.spacing.content};
+  ${ isMobile && `
+    flex-direction: column;
+  `}
 `

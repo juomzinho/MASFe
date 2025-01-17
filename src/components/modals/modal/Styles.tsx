@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.div`
@@ -37,6 +38,9 @@ export const Content = styled.div`
   padding: ${(p) => p.theme.spacing.content};
   -webkit-box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
   box-shadow: 10px 10px 30px 1px ${(p) => p.theme.color.shadow};
+  ${isMobile && `
+      width: 90%;
+  `}
 `
 
 export const Scroll = styled.div`
@@ -61,7 +65,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(p) => p.theme.spacing.item};
-  padding: ${(p) => p.theme.spacing.content};
+  padding: ${(p) => p.theme.spacing.item};
+  ${isMobile && `
+      overflow-y: scroll;
+  `}
 `
 export const Text = styled.p`
   color: ${(p) => p.theme.color.primary.text};

@@ -7,6 +7,7 @@ import { useFormVerb, VerbSchema } from '../../hooks/useFormVerb'
 import { forwardRef, Ref } from 'react'
 import FormCheck from '../../../../components/form/FormCheck'
 import * as Styles from './Styles'
+import { isMobile } from 'react-device-detect'
 
 interface Props {
   submit: (e: VerbSchema) => void
@@ -18,7 +19,7 @@ const FormVerb = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ sub
   const { control, errors, handleSend, handleSubmit, register } = useFormVerb({ submit, edit })
   return (
     <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-      <FormInput title="Verbo" widthInput={'450px'} {...register('verb', { required: true })} error={errors.verb} />
+      <FormInput title="Verbo" widthInput={isMobile?'calc(100vw - 100px)':'450px'} {...register('verb', { required: true })} error={errors.verb} />
       <FormSelect
         title="Dimensão"
         control={control}

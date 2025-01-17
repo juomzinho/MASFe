@@ -25,6 +25,7 @@ import Loader from '../../../../components/loader/Loader'
 import Title from '../../../../components/texts/title/Title'
 import NotFound from '../../../../components/errors/notFound/NotFound'
 import Text from '../../../../components/texts/text/Text'
+import { BrowserView, isMobile } from 'react-device-detect'
 
 const Home = () => {
   const { setContent } = useContentStore()
@@ -61,7 +62,9 @@ const Home = () => {
       <Card gridArea="1 / 1 / 7 / 3">
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
           <Title title="UX Correlations" />
+          <BrowserView>
           <Button action={() => setContent(2)} title="Ver mais" color="gradient" />
+          </BrowserView>
         </div>
         <div
           style={{
@@ -71,8 +74,8 @@ const Home = () => {
             gap: 10,
             padding: 10,
             justifyContent: 'flex-start',
-            height: 'calc(100% - 70px)',
-            overflow: 'scroll',
+            height: isMobile?'auto':'calc(100% - 70px)',
+            overflow: isMobile?'hidden':'scroll',
             alignContent: 'flex-start',
           }}
         >

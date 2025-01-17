@@ -10,6 +10,7 @@ import { useVerbs } from '../../../verbs/hooks/useVerbs'
 import { VerbSchema } from '../../../verbs/hooks/useFormVerb'
 import * as Styles from './Styles'
 import { DimensionArr } from '../../../../utils/defines/dimension'
+import { isMobile } from 'react-device-detect'
 
 interface Props {
   submit: (e: UXProps) => void
@@ -24,7 +25,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
 
   return (
     <Form onSubmit={handleSubmit((e) => handleSend(e))}>
-      <FormInput title="Titulo" widthInput={'600px'} {...register('name')} error={errors.name} />
+      <FormInput title="Titulo" widthInput={isMobile?'calc(100vw - 100px)':'600px'} {...register('name')} error={errors.name} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Styles.FormText>Eu, </Styles.FormText>
         <FormSelect

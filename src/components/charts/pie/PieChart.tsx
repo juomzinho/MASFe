@@ -1,6 +1,7 @@
 import { pieArcClasses, PieChart } from '@mui/x-charts'
 import * as Styles from './Styles'
 import { usePieChart } from './hooks/usePieChart'
+import { BrowserView } from 'react-device-detect'
 
 interface Props {
   data: {
@@ -41,6 +42,7 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
         })}
         width={width}
       />
+      <BrowserView>
       <Styles.CaptionContent>
         {data
           .sort((a, b) => b.value - a.value)
@@ -52,6 +54,7 @@ const Chart = ({ data, hiddenLegend, width }: Props) => {
             </Styles.Caption>
           ))}
       </Styles.CaptionContent>
+      </BrowserView>
     </Styles.Content>
   )
 }

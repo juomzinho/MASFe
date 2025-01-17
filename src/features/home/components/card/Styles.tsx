@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 export const Card = styled.div<{ gridArea: string }>`
@@ -10,4 +11,8 @@ export const Card = styled.div<{ gridArea: string }>`
   justify-content: center;
   padding: 20px;
   align-items: center;
+  ${isMobile && `
+    width: 100%;
+    max-height: 100vh;
+  `}
 `
