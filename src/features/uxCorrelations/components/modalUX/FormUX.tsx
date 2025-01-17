@@ -37,7 +37,7 @@ const FormUX = forwardRef<HTMLButtonElement, Props>(function FormVerbREf({ submi
         />
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <Styles.FormText>, quero </Styles.FormText>
+        <Styles.FormText>, quero que o sistema possa </Styles.FormText>
         <FormSelect
           title="Verbos"
           control={control}
