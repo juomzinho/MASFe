@@ -19,6 +19,8 @@ export const Button = styled.button<{ full?: boolean }>`
   }
   ${isMobile && `
       width: 100%;
+      border-bottom: 1px solid rgba(127,127,127,0.8) ;
+      border-radius: 0px;
     `
   }
 `

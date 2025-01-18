@@ -5,6 +5,7 @@ import { VerbSchema } from "./useFormVerb"
 import { handleError } from "../../../utils/handleError/handleError"
 import { useNotificationStore } from "../../../store/notifications"
 import { useNavigate } from "react-router-dom"
+import { getDimension } from "../../../utils/defines/dimension"
 
 export const useVerbs = () => {
     const [filtered, setFiltered] = useState<VerbSchema[]>([])
@@ -31,7 +32,12 @@ export const useVerbs = () => {
             return
         }
 
-        setFiltered(data?.data.content.filter((item: VerbSchema) => item.verb?.toUpperCase().includes(value.toUpperCase())))
+        setFiltered(
+            data?.data.content.filter(
+                (item: VerbSchema) => 
+                    item.verb?.toUpperCase().includes(value.toUpperCase()) ||
+                    getDimension(item.dimension).toString().toUpperCase().includes(value.toUpperCase())
+            ))
     }
 
     return {data: filtered, isLoading: isLoading || isFetching, handleFilter, searchTerm }

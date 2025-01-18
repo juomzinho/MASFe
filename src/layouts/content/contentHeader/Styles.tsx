@@ -12,6 +12,7 @@ export const Header = styled.header`
     height: auto; 
     text-align: center;
     align-items: center;
+    gap: 10px;
   `}
 `
 

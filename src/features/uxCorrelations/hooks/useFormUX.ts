@@ -24,7 +24,7 @@ export type UXProps = z.infer<typeof uxSchema>
 export const useFormUX = ({edit, submit}: Props) => {
     const {data: verbs} = useVerbs()
     const {data: personas} = usePersonas()
-    const {register, handleSubmit, formState: {errors, dirtyFields}, control, reset} = useForm<UXProps>({
+    const {register, handleSubmit, formState: {errors, dirtyFields}, control, reset, watch} = useForm<UXProps>({
         defaultValues: edit?edit:{}
     })
 
@@ -58,7 +58,9 @@ export const useFormUX = ({edit, submit}: Props) => {
         console.log(modifiedData)
         submit(modifiedData)
     }
+
+    const currentDimenison = watch('dimension')
     
     
-    return {handleSubmit, register, errors, control, handleSend}
+    return {handleSubmit, register, errors, control, handleSend, currentDimenison}
 }

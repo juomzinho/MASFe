@@ -17,5 +17,7 @@ export const ContentWrapper = styled.section`
       height: calc(100vh - 180px);
       overflow: scroll;
       margin-top: 10px;
+      background: none;
+      padding: 0;
   `}
 `

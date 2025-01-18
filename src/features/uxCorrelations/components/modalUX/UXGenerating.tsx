@@ -28,7 +28,7 @@ const UXGenerating = () => {
         <Styles.Row style={{ justifyContent: 'center' }}>
           <Styles.Icon src={Icons[theme].ai} />
           <div  style={{ width: '245px'}}>
-            <Text text={'Gerando sua história de usuário' + dots} size={'default'} />
+            <Text text={'Gerando critérios de aceitação' + dots} size={'default'} />
           </div>
         </Styles.Row>
       </ModalContentWrapper>
