@@ -58,10 +58,13 @@ img {
   -webkit-user-drag: none;
 }
 
-p, a {
+p, a, input, select, option, textarea{
   font-family: 'Quicksand';
   font-weight: normal;
   font-style: normal;
+}
+
+p{
   user-select: none; 
   -webkit-user-select: none; 
   -moz-user-select: none; 
