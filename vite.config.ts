@@ -19,5 +19,14 @@ export default defineConfig({
             '@store': path.resolve(__dirname, 'src/store'),
             '@utils': path.resolve(__dirname, 'src/utils'),
         }
-    }
+    },
+    server: {
+        proxy: {
+            '/api': {
+            target: 'https://masfe-api.onrender.com',
+            changeOrigin: true,              
+            rewrite: (path) => path.replace(/^\/api/, ''), 
+            },
+        },
+    },
 })
