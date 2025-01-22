@@ -6,6 +6,7 @@ import registerUser from '../services/registerUser'
 import { NotificationStatus, useNotificationStore } from '../../../store/notifications'
 import { handleError } from '../../../utils/handleError/handleError'
 import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../../store/auth'
 
 interface Props {
     toggleComponent: () => void
@@ -28,6 +29,7 @@ export type CreateUserSchema = z.infer<typeof createUserSchema>
 export const useRegister = ({}: Props) => {
     const navigate = useNavigate()
     const {setNotifications} = useNotificationStore()
+        const {setToken} = useAuthStore()
     const {register, control, formState: {errors}, handleSubmit, setValue} = useForm<CreateUserSchema>({
         resolver: zodResolver(createUserSchema),
         defaultValues: {
@@ -41,6 +43,7 @@ export const useRegister = ({}: Props) => {
         onSuccess: (r) => {
             setNotifications({status: NotificationStatus.Check, text: r.data.message})
             localStorage.setItem("isLogged","true")
+            setToken(r.data.content.token)
             navigate('/dashboard', {
                 replace: true
             })

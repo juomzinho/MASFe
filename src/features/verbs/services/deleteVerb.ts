@@ -5,5 +5,6 @@ interface Props {
 }
 
 export default async ({id}: Props) => {
-    return await api.delete("/verbs?id="+id)
+    const token = await localStorage.getItem('token')
+    return await api.delete("/verbs?id="+id, {headers: {Authorization: token}})
 }

@@ -18,6 +18,10 @@ import CloseWhite from '../../assets/icons/close-white.svg'
 import CloseBlack from '../../assets/icons/close-black.svg'
 import EditBlack from '../../assets/icons/edit-black.svg'
 import EditWhite from '../../assets/icons/edit-white.svg'
+import EyeSlashedWhite from '../../assets/icons/eye-slash-regular-white.svg'
+import EyeSlashedBlack from '../../assets/icons/eye-slash-regular-black.svg'
+import EyeRegularBlack from '../../assets/icons/eye-regular-black.svg'
+import EyeRegularWhite from '../../assets/icons/eye-regular-white.svg'
 
 export const Icons = {
     light: {
@@ -30,7 +34,9 @@ export const Icons = {
         verb: VerbBlack,
         ai: AIWhite,
         close: CloseBlack,
-        edit: EditBlack
+        edit: EditBlack,
+        eyeSlash: EyeSlashedBlack,
+        eyeRegular: EyeRegularBlack,
     },
     dark: {
         search: SearchWhite,
@@ -42,6 +48,8 @@ export const Icons = {
         verb: VerbWhite,
         ai: AIBlack,
         close: CloseWhite,
-        edit: EditWhite
+        edit: EditWhite,
+        eyeSlash: EyeSlashedWhite,
+        eyeRegular: EyeRegularWhite,
     },
 }

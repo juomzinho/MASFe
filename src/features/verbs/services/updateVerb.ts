@@ -7,5 +7,6 @@ interface Props {
 }
 
 export default async ({data, id}: Props) => {
-    return await api.put("/verbs", {...data, id})
+    const token = await localStorage.getItem('token')
+    return await api.put("/verbs", {...data, id}, {headers: {Authorization: token}})
 }

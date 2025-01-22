@@ -5,6 +5,7 @@ import { Popover } from '@mui/material'
 import { useThemeStore } from '../../store/theme'
 import Text from '../texts/text/Text'
 import { darkTheme, lightTheme } from '../../utils/theme/theme'
+import { Icons } from '../../utils/defines/icons'
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError
@@ -17,6 +18,7 @@ const FormInput = forwardRef<HTMLInputElement, InputProps>(
     const [open, toggleOpen] = useState<boolean>(!!error)
     const { theme } = useThemeStore()
     const divRef = useRef<HTMLDivElement>(null)
+    const [view, toggleView] = useState(false)
 
     useEffect(() => {
       if (!!error) toggleOpen(true)
@@ -32,7 +34,7 @@ const FormInput = forwardRef<HTMLInputElement, InputProps>(
       <Styles.FormItem ref={divRef}>
         <Styles.Title>{title}</Styles.Title>
         <Styles.Input
-          type={passoword ? 'password' : type}
+          type={passoword && !view ? 'password' : type}
           className={className}
           ref={ref}
           {...props}
@@ -57,6 +59,14 @@ const FormInput = forwardRef<HTMLInputElement, InputProps>(
         >
           <Text size='small' text={error?.message ?? ''} />
         </Popover>
+        
+        {passoword && (
+          <Styles.EyeBtn onClick={() => toggleView(!view)}>
+            <Styles.EyeIcon
+              src={view ? Icons[theme].eyeSlash : Icons[theme].eyeRegular}
+            />
+          </Styles.EyeBtn>
+        )}
       </Styles.FormItem>
     )
   },

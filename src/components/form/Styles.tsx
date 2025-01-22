@@ -167,6 +167,7 @@ export const FormItem = styled.div<{
   ${(p) => p.row && 'flex-direction: row; justify-content: space-between; align-items: center;'}
   ${(p) => p.error && 'background: rgba(250, 0, 0, 0.2);'}
   border-radius: 5px;
+  position: relative;
 `
 
 export const Title = styled.p`
@@ -214,3 +215,14 @@ export const HiddenCheckbox = styled.input`
     opacity: 0.5;
   }
 `
+export const EyeBtn = styled.div`
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 27.5px;
+`;
+
+export const EyeIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;

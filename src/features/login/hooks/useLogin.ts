@@ -6,6 +6,8 @@ import auth from "../services/auth"
 import { useNavigate } from "react-router-dom"
 import { handleError } from "../../../utils/handleError/handleError"
 import { useNotificationStore } from "../../../store/notifications"
+import { AxiosResponse } from "axios"
+import { useAuthStore } from "../../../store/auth"
 
 const loginSchema = z.object({
     email: z.string().email(),
@@ -19,6 +21,7 @@ export type LoginSchema = z.infer<typeof loginSchema>
 export const useLogin = () => {
     const navigate = useNavigate()
     const {setNotifications} = useNotificationStore()
+    const {setToken} = useAuthStore()
     const {register, formState: {errors}, handleSubmit} = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema)
     })
@@ -26,8 +29,9 @@ export const useLogin = () => {
     const {mutate: send, isLoading} = useMutation({
         mutationFn: auth,
         mutationKey: ["registerUser"],
-        onSuccess: () => {
+        onSuccess: (r: AxiosResponse) => {
             localStorage.setItem("isLogged","true")
+            setToken(r.data.content.token)
             navigate('/dashboard', {
                 replace: true
             })

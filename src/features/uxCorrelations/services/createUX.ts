@@ -6,5 +6,6 @@ interface Props {
 }
 
 export default async ({data}: Props) => {
-    return await api.post("/ux-correlation", {...data}, {withCredentials: true})
+    const token = await localStorage.getItem('token')
+    return await api.post("/ux-correlation", {...data}, {headers: {Authorization: token}})
 }

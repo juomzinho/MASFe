@@ -1,5 +1,6 @@
 import { api } from "../../../services/api"
 
 export default async () => {
-    return await api.get("/dashboard", {withCredentials: true})
+    const token = await localStorage.getItem('token')
+    return await api.get("/dashboard", {headers: {Authorization: token}})
 }

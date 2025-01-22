@@ -6,15 +6,18 @@ import { useNavigate } from 'react-router-dom'
 import logout from '../../../services/logout'
 import { useThemeStore } from '../../../store/theme'
 import Loader from '../../../components/loader/Loader'
+import { useAuthStore } from '../../../store/auth'
 
 const NavUserMenu = () => {
   const navigate = useNavigate()
   const { setTheme, theme } = useThemeStore()
+  const {setToken} = useAuthStore()
   const handleLogout = useMutation({
     mutationFn: logout,
     mutationKey: ['logout'],
     onSuccess: () => {
       localStorage.removeItem('isLogged')
+      setToken('')
       navigate('/', { replace: true })
     },
   })

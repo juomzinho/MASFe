@@ -6,15 +6,18 @@ import { useMutation } from 'react-query'
 import logout from '../../services/logout'
 import Loader from '../../components/loader/Loader'
 import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../store/auth'
 
 const SidebarUserMenu = () => {
   const navigate = useNavigate()
+    const {setToken} = useAuthStore()
   const { setTheme, theme } = useThemeStore()
   const handleLogout = useMutation({
     mutationFn: logout,
     mutationKey: ['logout'],
     onSuccess: () => {
       localStorage.removeItem('isLogged')
+      setToken('')
       navigate('/', { replace: true })
     },
   })
