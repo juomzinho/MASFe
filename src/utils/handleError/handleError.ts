@@ -15,6 +15,7 @@ export const handleError = async ({code, message, setNotifications, navigate}: P
         case "ERR-02":
             setNotifications({status: NotificationStatus.Warning, text: message})
             await localStorage.removeItem("isLogged")
+            localStorage.setItem('token','')
             navigate('/', {
                 replace: true
             })
